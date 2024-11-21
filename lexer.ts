@@ -94,7 +94,7 @@ export function tokenize(sourceCode: string): Token[] {
       } else if (isSkippable(src[0])) {
         src.shift(); // Skipa o caractere atual
       } else {
-        console.log("Caractere irreconhecível encontrado no src: ", src[0]);
+        console.log("Caractere irreconhecível encontrado no src:", src[0]);
         Deno.exit(1);
       }
     }
@@ -102,7 +102,9 @@ export function tokenize(sourceCode: string): Token[] {
   return tokens; // Retorna o array de tokens identificados no código
 }
 
+// Lê o arquivo entre '()' de forma assíncrona e guarda na variável 'source'
 const source = await Deno.readTextFile("./test.txt");
+// Pega cada token que a função 'tokenize' gera e printa no console
 for (const token of tokenize(source)) {
   console.log(token);
 }
