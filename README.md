@@ -8,7 +8,7 @@ git clone https://github.com/caio-andres/simple-programming-language.git
 
 ### 2. Instale a extensão do Deno (Ambiente de execução TypeScript) no VSCode, [clicando aqui](https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno).
 
-### 3. Verifique se foi criado um arquivo 'settings.json' no seu workspace com estas configurações:
+### 2.1. Caso os comandos 'Deno' não estejam funcionando, crie um arquivo 'settings.json' no seu workspace com esta configuração:
 
 ```bash
 {
