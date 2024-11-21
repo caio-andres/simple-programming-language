@@ -16,6 +16,8 @@ git clone https://github.com/caio-andres/simple-programming-language.git
 }
 ```
 
+# How work?
+
 # Technologies used
 
 - `TypeScript` <sub>_Linguagem de Programação_</sub>
