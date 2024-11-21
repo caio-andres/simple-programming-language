@@ -18,15 +18,16 @@ git clone https://github.com/caio-andres/simple-programming-language.git
 
 # Technologies used
 
-- `TypeScript` <sub>_Programming Language_</sub>
+- `TypeScript` <sub>_Linguagem de Programação_</sub>
 
-- `Deno` <sub>_Runtime Environment_</sub>
+- `Deno` <sub>_Ambiente de Execução_</sub>
 
 # Project developers
 
 | Name                           | RA        |
 | ------------------------------ | --------- |
 | Caio André Porto de Oliveira   | 822156202 |
-| Giulio Enrico Miranda Maciotta | 822138213 |
 | Carlos Armando Munhoz Vilela   | 822159355 |
+| Felipe Mori Ferreira           | 822129885 |
+| Giulio Enrico Miranda Maciotta | 822138213 |
 | Gustavo Morais Cardoso         | 822154343 |
