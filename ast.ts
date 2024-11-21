@@ -10,26 +10,30 @@ export interface Statement {
   kind: NodeType;
 }
 
-// Interface que define o programa, se extendendo da declaração 'Statement'
+// Interface que define o programa
 export interface Program extends Statement {
   kind: "Program";
   body: Statement[];
 }
 
+// Interface que é definido como um tipo de Statement, servindo de base para outras expressões
 export interface Expr extends Statement {}
 
+// Interface que define a expressão binária :: 'Expr'
 export interface BinaryExpr extends Expr {
   kind: "BinaryExpr";
-  left: Expr;
-  right: Expr;
-  operator: string;
+  left: Expr; // À esquerda da expressão binária, averá um valor do tipo 'Expr'
+  right: Expr; // À direita da expressão binária, averá um valor do tipo 'Expr'
+  operator: string; // Operador
 }
 
+// Interface que define o identificador :: 'Expr'
 export interface Identifier extends Expr {
   kind: "Identifier";
-  symbol: string;
+  symbol: string; // Símbolo
 }
 
+// Interface que define o número literal :: 'Expr'
 export interface NumericLiteral extends Expr {
   kind: "NumericLiteral";
   value: number;

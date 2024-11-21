@@ -1,12 +1,18 @@
 // Enum que define os tipos de token possíveis
 export enum TokenType {
-  Number, // Números em geral
-  Identifier, // Nome de variáveis
-  Equals, // "="
-  OpenParen, // "("
-  CloseParen, // ")"
-  BinaryOperator, // "+", "-", "*", "/"
-  Let, // Declarar variáveis
+  // Palavras-chave (keywords)
+  Let,
+
+  // Tipos literais
+  Number,
+  Identifier, // Identificador (nome de variável)
+
+  // Combinação - Operadores
+  Equals, // =
+  OpenParen, // Abre parênteses
+  CloseParen, // Fecha parênteses
+  BinaryOperator, // Operador binário
+  EOF, // End of file (final do arquivo)
 }
 
 // Mapeando com tabela de palavras-chave (keywords), especificando o tipo das chaves <string> e dos valores <TokenType>
@@ -30,9 +36,11 @@ function token(value = "", type: TokenType): Token {
 // Vericar se há uma letra do alfabeto (A-Z)(a-z)
 function isAlpha(src: string) {
   return src.toUpperCase() != src.toLowerCase();
-  // Se os dois forem iguais, o caractere é não alfabético (número, símbolo, espaço e etc)
-  // Letras do alfabeto têm formas maiúsculas e minúsculas diferentes, então o resultado de toUpperCase() e toLowerCase() será diferente.
-  // Outros caracteres (como números) não possuem distinções maiúsculas/minúsculas, então o resultado será o mesmo.
+  /**
+   * Se os dois forem iguais, o caractere é não alfabético (número, símbolo, espaço e etc)
+   * Letras do alfabeto têm formas maiúsculas e minúsculas diferentes, então o resultado de toUpperCase() e toLowerCase() será diferente.
+   * Outros caracteres (como números) não possuem distinções maiúsculas/minúsculas, então o resultado será o mesmo.
+   */
 }
 
 // Verificar se há um espaço em branco no retorno
@@ -99,12 +107,14 @@ export function tokenize(sourceCode: string): Token[] {
       }
     }
   }
+
+  tokens.push(token("EndOfFile", TokenType.EOF));
   return tokens; // Retorna o array de tokens identificados no código
 }
 
-// Lê o arquivo entre '()' de forma assíncrona e guarda na variável 'source'
+/* // Lê o arquivo entre '()' de forma assíncrona e guarda na variável 'source'
 const source = await Deno.readTextFile("./test.txt");
 // Pega cada token que a função 'tokenize' gera e printa no console
 for (const token of tokenize(source)) {
   console.log(token);
-}
+} */
