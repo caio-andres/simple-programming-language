@@ -1,12 +1,5 @@
-fn makeAdder (offset) {
-
-  fn add (x, y)  {
-    x + y + offset
-  }
-
-  add
+fn add(x, y) {
+  x + y
 }
 
-const adder = makeAdder(1);
-
-print(adder(10, 5))
+add(4, 5)

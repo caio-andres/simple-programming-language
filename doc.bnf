@@ -1,0 +1,58 @@
+<program> ::= <stmt>* 
+
+<stmt> ::= <var_declaration>
+        | <fn_declaration>
+        | <expr_stmt>
+
+<var_declaration> ::= "let" <identifier> "=" <expr> ";"                     -- Token: Let
+                  | "const" <identifier> "=" <expr> ";"                     -- Token: Const
+                  | "let" <identifier> ";"                                  -- Token: Let
+                  | "const" <identifier> ";"                                -- Token: Const
+
+<fn_declaration> ::= "fn" <identifier> "(" <arg_list> ")" "{" <stmt>* "}"   -- Token: Fn
+
+<arg_list> ::= <identifier> ("," <identifier>)*                             -- Token: Identifier, Comma
+
+<expr_stmt> ::= <expr> ";"                                                  -- Token: Semicolon
+
+<expr> ::= <assignment_expr>
+        | <binary_expr>
+        | <primary_expr>
+
+<assignment_expr> ::= <identifier> "=" <expr>                               -- Token: Identifier, Equals
+
+<binary_expr> ::= <expr> <binary_operator> <expr>                           -- Token: BinaryOperator
+
+<binary_operator> ::= "+" | "-" | "*" | "/" | "%"                           -- Token: BinaryOperator
+
+<primary_expr> ::= <number>                                                 -- Token: Number
+               | <identifier>                                               -- Token: Identifier
+               | "(" <expr> ")"                                             -- Token: OpenParen, CloseParen
+               | <object_expr>                                              -- Token: OpenBrace, CloseBrace
+               | <call_expr>                                                -- Token: OpenParen, CloseParen, Identifier
+
+<object_expr> ::= "{" <property_list> "}"                                   -- Token: OpenBrace, CloseBrace
+
+<property_list> ::= <identifier> ":" <expr> ("," <identifier> ":" <expr>)*  -- Token: Identifier, Colon, Comma
+
+<call_expr> ::= <identifier> "(" <arg_list> ")"                             -- Token: Identifier, OpenParen, CloseParen
+
+<arg_list> ::= <expr> ("," <expr>)*                                         -- Token: Expr, Comma
+
+<identifier> ::= [a-zA-Z_][a-zA-Z0-9_]*                                     -- Token: Identifier
+
+<number> ::= [0-9]+                                                         -- Token: Number
+
+<binary_operator> ::= "+" | "-" | "*" | "/" | "%"                           -- Token: BinaryOperator
+<equals> ::= "="                                                            -- Token: Equals
+<comma> ::= ","                                                             -- Token: Comma
+<dot> ::= "."                                                               -- Token: Dot
+<colon> ::= ":"                                                             -- Token: Colon
+<semicolon> ::= ";"                                                         -- Token: Semicolon
+<open_paren> ::= "("                                                        -- Token: OpenParen
+<close_paren> ::= ")"                                                       -- Token: CloseParen
+<open_brace> ::= "{"                                                        -- Token: OpenBrace
+<close_brace> ::= "}"                                                       -- Token: CloseBrace
+<open_bracket> ::= "["                                                      -- Token: OpenBracket
+<close_bracket> ::= "]"                                                     -- Token: CloseBracket
+<eof> ::= "EOF"                                                             -- Token: EOF

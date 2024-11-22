@@ -2,14 +2,14 @@ export enum TokenType {
   // Palavras-chave
   Let,
   Const,
-  Fn, // fn
+  Fn, // Função
 
   // Tipos Literais
   Number,
   Identifier,
 
   // Agrupamento * Operadores
-  BinaryOperator,
+  BinaryOperator, // "+", "-", "*", "/"
   Equals,
   Comma,
   Dot,
@@ -20,7 +20,7 @@ export enum TokenType {
   OpenBrace, // {
   CloseBrace, // }
   OpenBracket, // [
-  CloseBracket, //]
+  CloseBracket, // ]
   EOF, // End of file (Fim do arquivo)
 }
 
