@@ -43,5 +43,5 @@ export interface NumericLiteral extends Expr {
 // Interface que define null
 export interface NullLiteral extends Expr {
   kind: "NullLiteral";
-  value: null;
+  value: "null";
 }
