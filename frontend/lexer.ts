@@ -4,6 +4,7 @@ export enum TokenType {
   Let,
 
   // Tipos literais
+  Null,
   Number,
   Identifier, // Identificador (nome de variável)
 
@@ -18,8 +19,7 @@ export enum TokenType {
 // Mapeando com tabela de palavras-chave (keywords), especificando o tipo das chaves <string> e dos valores <TokenType>
 const KEYWORDS: Record<string, TokenType> = {
   let: TokenType.Let,
-  number: TokenType.Number,
-  identifier: TokenType.Identifier,
+  null: TokenType.Null,
 };
 
 // Interface que representa um token
@@ -71,7 +71,8 @@ export function tokenize(sourceCode: string): Token[] {
       src[0] == "+" ||
       src[0] == "-" ||
       src[0] == "*" ||
-      src[0] == "/"
+      src[0] == "/" ||
+      src[0] == "%"
     ) {
       tokens.push(token(src.shift(), TokenType.BinaryOperator));
     } else if (src[0] == "=") {
@@ -94,10 +95,10 @@ export function tokenize(sourceCode: string): Token[] {
 
         // Check para keywords reservadas
         const reserved = KEYWORDS[ident];
-        if (reserved == undefined) {
-          tokens.push(token(ident, TokenType.Identifier));
-        } else {
+        if (typeof reserved == "number") {
           tokens.push(token(ident, reserved));
+        } else {
+          tokens.push(token(ident, TokenType.Identifier));
         }
       } else if (isSkippable(src[0])) {
         src.shift(); // Skipa o caractere atual
