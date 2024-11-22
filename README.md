@@ -16,7 +16,7 @@ git clone https://github.com/caio-andres/simple-programming-language.git
 }
 ```
 
-# How work?
+# How it work?
 
 ### 1. **AST (Abstract Syntax Tree)**
 
