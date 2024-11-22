@@ -1,21 +1,16 @@
 import Parser from "./frontend/parser.ts";
+import { createGlobalEnv } from "./runtime/environment.ts";
 import { evaluate } from "./runtime/interpreter.ts";
 
-repl();
+run("./test/test.txt");
 
-function repl() {
+async function run(filename: string) {
   const parser = new Parser();
-  console.log("Repl v0.1");
-  while (true) {
-    const input = prompt(">");
+  const env = createGlobalEnv();
 
-    if (!input || input.includes("exit")) {
-      Deno.exit(1);
-    }
+  const input = await Deno.readTextFile(filename);
+  const program = parser.produceAST(input);
 
-    const program = parser.produceAST(input);
-
-    const result = evaluate(program);
-    console.log(result);
-  }
+  const result = evaluate(program, env);
+  // console.log(result);
 }

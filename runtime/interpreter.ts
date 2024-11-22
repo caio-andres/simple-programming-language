@@ -1,69 +1,64 @@
-import { RuntimeVal, NumberVal, NullVal } from "./values.ts";
+import { NumberVal, RuntimeVal } from "./values.ts";
 import {
-  NumericLiteral,
-  Statement,
+  AssignmentExpr,
   BinaryExpr,
+  CallExpr,
+  FunctionDeclaration,
+  Identifier,
+  NumericLiteral,
+  ObjectLiteral,
   Program,
+  Stmt,
+  VarDeclaration,
 } from "../frontend/ast.ts";
+import Environment from "./environment.ts";
+import {
+  eval_function_declaration,
+  eval_program,
+  eval_var_declaration,
+} from "./eval/statements.ts";
+import {
+  eval_assignment,
+  eval_binary_expr,
+  eval_call_expr,
+  eval_identifier,
+  eval_object_expr,
+} from "./eval/expressions.ts";
 
-function eval_program(program: Program): RuntimeVal {
-  let lastEvaluated: RuntimeVal = { type: "null", value: "null" } as NullVal;
-  for (const statement of program.body) {
-    lastEvaluated = evaluate(statement);
-  }
-  return lastEvaluated;
-}
-
-function eval_numeric_binary_expr(
-  lhs: NumberVal,
-  rhs: NumberVal,
-  operator: string
-): NumberVal {
-  let result: number = 0;
-  if (operator == "+") result = lhs.value + rhs.value;
-  else if (operator == "-") result = lhs.value - rhs.value;
-  else if (operator == "*") result = lhs.value * rhs.value;
-  else if (operator == "/") result = lhs.value / rhs.value;
-  else result = lhs.value % rhs.value;
-
-  return { value: result, type: "number" };
-}
-
-function evaluate_binary_expr(binop: BinaryExpr): RuntimeVal {
-  const lhs = evaluate(binop.left);
-  const rhs = evaluate(binop.right);
-
-  if (lhs.type == "number" && rhs.type == "number") {
-    return eval_numeric_binary_expr(
-      lhs as NumberVal,
-      rhs as NumberVal,
-      binop.operator
-    );
-  }
-
-  return { type: "null", value: "null" } as NullVal;
-}
-
-export function evaluate(astNode: Statement): RuntimeVal {
+// Função principal de avaliação, que trata cada tipo de nó no AST
+export function evaluate(astNode: Stmt, env: Environment): RuntimeVal {
   switch (astNode.kind) {
+    // Avalia um literal numérico
     case "NumericLiteral":
       return {
         value: (astNode as NumericLiteral).value,
         type: "number",
       } as NumberVal;
 
-    case "NullLiteral":
-      return { value: "null", type: "null" } as NullVal;
-
+    // Avalia identificadores, objetos, chamadas, atribuições e expressões binárias
+    case "Identifier":
+      return eval_identifier(astNode as Identifier, env);
+    case "ObjectLiteral":
+      return eval_object_expr(astNode as ObjectLiteral, env);
+    case "CallExpr":
+      return eval_call_expr(astNode as CallExpr, env);
+    case "AssignmentExpr":
+      return eval_assignment(astNode as AssignmentExpr, env);
     case "BinaryExpr":
-      return evaluate_binary_expr(astNode as BinaryExpr);
+      return eval_binary_expr(astNode as BinaryExpr, env);
 
+    // Avalia o programa principal e declarações como variáveis e funções
     case "Program":
-      return eval_program(astNode as Program);
+      return eval_program(astNode as Program, env);
+    case "VarDeclaration":
+      return eval_var_declaration(astNode as VarDeclaration, env);
+    case "FunctionDeclaration":
+      return eval_function_declaration(astNode as FunctionDeclaration, env);
 
+    // Lida com nós não implementados, encerrando a execução com erro
     default:
       console.error(
-        "Este AST não está configurado para interpretação ainda.",
+        "This AST Node has not yet been setup for interpretation.\n",
         astNode
       );
       Deno.exit(0);

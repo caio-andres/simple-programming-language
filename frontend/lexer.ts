@@ -1,73 +1,100 @@
-// Enum que define os tipos de token possíveis
 export enum TokenType {
-  // Palavras-chave (keywords)
+  // Palavras-chave
   Let,
+  Const,
+  Fn, // fn
 
-  // Tipos literais
-  Null,
+  // Tipos Literais
   Number,
-  Identifier, // Identificador (nome de variável)
+  Identifier,
 
-  // Combinação - Operadores
-  Equals, // =
-  OpenParen, // Abre parênteses
-  CloseParen, // Fecha parênteses
-  BinaryOperator, // Operador binário
-  EOF, // End of file (final do arquivo)
+  // Agrupamento * Operadores
+  BinaryOperator,
+  Equals,
+  Comma,
+  Dot,
+  Colon,
+  Semicolon,
+  OpenParen, // (
+  CloseParen, // )
+  OpenBrace, // {
+  CloseBrace, // }
+  OpenBracket, // [
+  CloseBracket, //]
+  EOF, // End of file (Fim do arquivo)
 }
 
-// Mapeando com tabela de palavras-chave (keywords), especificando o tipo das chaves <string> e dos valores <TokenType>
+/**
+ * Constante para mapear palavras-chave e identificadores conhecidos + símbolos.
+ */
 const KEYWORDS: Record<string, TokenType> = {
   let: TokenType.Let,
-  null: TokenType.Null,
+  const: TokenType.Const,
+  fn: TokenType.Fn,
 };
 
-// Interface que representa um token
+// Representa um único token gerado a partir do código fonte.
 export interface Token {
-  value: string; // Texto literal do token
-  type: TokenType; // Tipo do token
+  value: string; // contém o valor bruto como visto no código fonte.
+  type: TokenType; // estrutura tagueada.
 }
 
-// Função auxiliar para criar um token a partir de um valor e tipo
+// Retorna um token de um dado tipo e valor
 function token(value = "", type: TokenType): Token {
   return { value, type };
 }
 
-// Vericar se há uma letra do alfabeto (A-Z)(a-z)
-function isAlpha(src: string) {
+/**
+ * Retorna se o caractere passado é alfabético -> [a-zA-Z]
+ */
+function isalpha(src: string) {
   return src.toUpperCase() != src.toLowerCase();
-  /**
-   * Se os dois forem iguais, o caractere é não alfabético (número, símbolo, espaço e etc)
-   * Letras do alfabeto têm formas maiúsculas e minúsculas diferentes, então o resultado de toUpperCase() e toLowerCase() será diferente.
-   * Outros caracteres (como números) não possuem distinções maiúsculas/minúsculas, então o resultado será o mesmo.
-   */
 }
 
-// Verificar se há um espaço em branco no retorno
-function isSkippable(str: string) {
-  return str == " " || str == "\n" || str == "\t";
+/**
+ * Retorna true se o caractere é um espaço em branco -> [\s, \t, \n]
+ */
+function isskippable(str: string) {
+  return str == " " || str == "\n" || str == "\t" || str == "\r";
 }
 
-// Verificar se o primeiro caractere é um dígito entre 0 e 9
-function isInt(str: string) {
+/**
+ Retorna se o caractere é um número inteiro válido -> [0-9]
+ */
+function isint(str: string) {
   const c = str.charCodeAt(0);
-  const bounds = ["0".charCodeAt(0), "9".charCodeAt(0)]; // O código ASCII de 0 é 48, de 9 é 57
-  return c >= bounds[0] && c <= bounds[1]; // True ou falso, dependendo do valor de C
+  const bounds = ["0".charCodeAt(0), "9".charCodeAt(0)];
+  return c >= bounds[0] && c <= bounds[1];
 }
 
-// Função que converte o código em uma lista de tokens
+/**
+ * Dado uma string representando o código fonte: Produz tokens e lida
+ * com possíveis caracteres não identificados.
+ *
+ * - Retorna um array de tokens.
+ * - Não modifica a string de entrada.
+ */
 export function tokenize(sourceCode: string): Token[] {
-  const tokens = new Array<Token>(); // Array que armazena os tokens identificados
-  const src = sourceCode.split(""); // Separa cada caractere do código para análise
+  const tokens = new Array<Token>();
+  const src = sourceCode.split("");
 
-  // Construir cada token até o final do arquivo
+  // Produz tokens até que o EOF seja alcançado.
   while (src.length > 0) {
-    // Se o próximo caractere for "(", cria um token OpenParen e o adiciona ao array de tokens
+    // COMEÇA A ANALISAR TOKENS DE UM ÚNICO CARACTERE
     if (src[0] == "(") {
       tokens.push(token(src.shift(), TokenType.OpenParen));
     } else if (src[0] == ")") {
       tokens.push(token(src.shift(), TokenType.CloseParen));
-    } else if (
+    } else if (src[0] == "{") {
+      tokens.push(token(src.shift(), TokenType.OpenBrace));
+    } else if (src[0] == "}") {
+      tokens.push(token(src.shift(), TokenType.CloseBrace));
+    } else if (src[0] == "[") {
+      tokens.push(token(src.shift(), TokenType.OpenBracket));
+    } else if (src[0] == "]") {
+      tokens.push(token(src.shift(), TokenType.CloseBracket));
+    } // LIDA COM OPERADORES BINÁRIOS
+    else if (
       src[0] == "+" ||
       src[0] == "-" ||
       src[0] == "*" ||
@@ -75,47 +102,61 @@ export function tokenize(sourceCode: string): Token[] {
       src[0] == "%"
     ) {
       tokens.push(token(src.shift(), TokenType.BinaryOperator));
-    } else if (src[0] == "=") {
+    } // Lida com tokens condicionais e de atribuição
+    else if (src[0] == "=") {
       tokens.push(token(src.shift(), TokenType.Equals));
-    } else {
-      // Lidar com tokens de vários caracteres
-
-      // Construir um token de número
-      if (isInt(src[0])) {
+    } else if (src[0] == ";") {
+      tokens.push(token(src.shift(), TokenType.Semicolon));
+    } else if (src[0] == ":") {
+      tokens.push(token(src.shift(), TokenType.Colon));
+    } else if (src[0] == ",") {
+      tokens.push(token(src.shift(), TokenType.Comma));
+    } else if (src[0] == ".") {
+      tokens.push(token(src.shift(), TokenType.Dot));
+    } // LIDA COM PALAVRAS-CHAVE, TOKENS E IDENTIFICADORES MULTICARACTERE...
+    else {
+      // Lida com literais numéricos -> Inteiros
+      if (isint(src[0])) {
         let num = "";
-        while (src.length > 0 && isInt(src[0])) {
+        while (src.length > 0 && isint(src[0])) {
           num += src.shift();
         }
+
+        // Adiciona um novo token numérico.
         tokens.push(token(num, TokenType.Number));
-      } else if (isAlpha(src[0])) {
+      } // Lida com identificadores e tokens de palavras-chave.
+      else if (isalpha(src[0])) {
         let ident = "";
-        while (src.length > 0 && isAlpha(src[0])) {
+        while (src.length > 0 && isalpha(src[0])) {
           ident += src.shift();
         }
 
-        // Check para keywords reservadas
+        // VERIFICA PALAVRAS-CHAVE RESERVADAS
         const reserved = KEYWORDS[ident];
+        // Se o valor não for undefined, o identificador é uma
+        // palavra-chave reconhecida
         if (typeof reserved == "number") {
           tokens.push(token(ident, reserved));
         } else {
+          // Nome não reconhecido deve ser um símbolo definido pelo usuário.
           tokens.push(token(ident, TokenType.Identifier));
         }
-      } else if (isSkippable(src[0])) {
-        src.shift(); // Skipa o caractere atual
-      } else {
-        console.log("Caractere irreconhecível encontrado no src:", src[0]);
+      } else if (isskippable(src[0])) {
+        // Ignora caracteres desnecessários.
+        src.shift();
+      } // Lida com caracteres não reconhecidos.
+      // TODO: Implementar melhores erros e recuperação de erros.
+      else {
+        console.error(
+          "Caractere não reconhecido encontrado no código fonte: ",
+          src[0].charCodeAt(0),
+          src[0]
+        );
         Deno.exit(1);
       }
     }
   }
 
-  tokens.push(token("EndOfFile", TokenType.EOF));
-  return tokens; // Retorna o array de tokens identificados no código
+  tokens.push({ type: TokenType.EOF, value: "EndOfFile" });
+  return tokens;
 }
-
-/* // Lê o arquivo entre '()' de forma assíncrona e guarda na variável 'source'
-const source = await Deno.readTextFile("./test.txt");
-// Pega cada token que a função 'tokenize' gera e printa no console
-for (const token of tokenize(source)) {
-  console.log(token);
-} */
