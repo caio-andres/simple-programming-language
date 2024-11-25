@@ -1,3 +1,5 @@
+**SPL** <sup>_Simple Programming Language_<sup>
+
 # Getting started
 
 ### 1. Clone o projeto:
