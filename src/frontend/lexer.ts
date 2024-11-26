@@ -61,6 +61,7 @@ function isskippable(str: string) {
 /**
  Retorna se o caractere é um número inteiro válido -> [0-9]
  */
+
 function isint(str: string) {
   const c = str.charCodeAt(0);
   const bounds = ["0".charCodeAt(0), "9".charCodeAt(0)];
