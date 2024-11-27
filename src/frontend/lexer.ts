@@ -5,16 +5,16 @@ export enum TokenType {
   Fn, // Função
 
   // Tipos Literais
-  Number,
-  Identifier,
+  Number, // Número
+  Identifier, // Identificador
 
   // Agrupamento * Operadores
   BinaryOperator, // "+", "-", "*", "/"
-  Equals,
-  Comma,
-  Dot,
-  Colon,
-  Semicolon,
+  Equals, // =
+  Comma, // ,
+  Dot, // .
+  Colon, // :
+  Semicolon, // ;
   OpenParen, // (
   CloseParen, // )
   OpenBrace, // {
