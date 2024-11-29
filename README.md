@@ -24,6 +24,25 @@ git clone https://github.com/caio-andres/simple-programming-language.git
 deno run --allow-all main.ts
 ```
 
+# Commands in SPL <sup>_Simple Programming Language_<sup>
+
+| **SPL <sup>_Simple Programming Language_<sup>** | **JavaScript**                                      | **Description**                                                        |
+| ----------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------- |
+| `let <variable> = <expr>;`                      | `let <variable> = <expr>;`                          | Declaração de variável com inicialização.                              |
+| `const <variable> = <expr>;`                    | `const <variable> = <expr>;`                        | Declaração de constante com inicialização.                             |
+| `let <variable>;`                               | `let <variable>;`                                   | Declaração de variável sem inicialização.                              |
+| `const <variable>;`                             | `const <variable>;`                                 | Declaração de constante sem inicialização (inválido em JS sem valor).  |
+| `fn <variable> (parameter) { <declaration>* }`  | `function <variable>(parameter) { <declaration>* }` | Declaração de função.                                                  |
+| `<variable> = <expr>;`                          | `<variable> = <expr>;`                              | Atribuição de valor a uma variável.                                    |
+| `<expr> <math_operator> <expr>`                 | `<expr> <math_operator> <expr>`                     | Expressões binárias (adição, subtração, multiplicação, etc.).          |
+| `<number>`                                      | `<number>`                                          | Literal numérico.                                                      |
+| `<variable>`                                    | `<variable>`                                        | Identificador (variável, função).                                      |
+| `(<expr>)`                                      | `(<expr>)`                                          | Expressão entre parênteses.                                            |
+| `{ <property_list> }`                           | `{ <property_list> }`                               | Objeto literal.                                                        |
+| `<variable> (parameter)`                        | `<variable>(parameter)`                             | Chamada de função.                                                     |
+| `<variable> ":" <expr>`                         | `<variable>: <expr>`                                | Definição de propriedades de um objeto (no SPL usa ":", no JS também). |
+| `+`, `-`, `*`, `/`, `%`                         | `+`, `-`, `*`, `/`, `%`                             | Operadores binários.                                                   |
+
 # How it work?
 
 ### 1. **AST (Abstract Syntax Tree)**
