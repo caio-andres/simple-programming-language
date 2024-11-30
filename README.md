@@ -17,7 +17,7 @@ npm i
 ### 2. <span style="font-size:16px">Execute o projeto:</span>
 
 ```bash
-npm start run
+npm start
 ```
 
 # Commands in SPL <sup>_Simple Programming Language_<sup>
