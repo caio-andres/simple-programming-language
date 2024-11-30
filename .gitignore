@@ -3,3 +3,6 @@
 
 # Files
 settings.json
+
+# Dependences
+node_modules
