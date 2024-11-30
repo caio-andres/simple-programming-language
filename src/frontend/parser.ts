@@ -49,7 +49,7 @@ export default class Parser {
     const prev = this.tokens.shift() as Token;
     if (!prev || prev.type != type) {
       console.error("Parser Error:\n", err, prev, " - Expecting: ", type);
-      Deno.exit(1);
+      process.exit(1);
     }
 
     return prev;
@@ -372,7 +372,7 @@ export default class Parser {
       // Tokens não identificados
       default:
         console.error("Unexpected token found during parsing!", this.at());
-        Deno.exit(1);
+        process.exit(1);
     }
   }
 }

@@ -153,7 +153,7 @@ export function tokenize(sourceCode: string): Token[] {
           src[0].charCodeAt(0),
           src[0]
         );
-        Deno.exit(1);
+        process.exit(1);
       }
     }
   }

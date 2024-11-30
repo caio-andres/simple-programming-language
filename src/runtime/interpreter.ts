@@ -61,6 +61,6 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal {
         "This AST Node has not yet been setup for interpretation.\n",
         astNode
       );
-      Deno.exit(0);
+      process.exit(0);
   }
 }
