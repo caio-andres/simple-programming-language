@@ -8,20 +8,16 @@
 git clone https://github.com/caio-andres/simple-programming-language.git
 ```
 
-### 2. <span style="font-size:16px">Instale a extensão do Deno (Ambiente de execução TypeScript) no VSCode, [clicando aqui](https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno).</span>
-
-### 2.1. <span style="font-size:16px">Caso os comandos 'Deno' não estejam funcionando, crie um arquivo 'settings.json' no seu workspace com esta configuração:</span>
+### 2. <span style="font-size:16px">Instale as dependências:</span>
 
 ```bash
-{
-  "deno.enable": true
-}
+npm i
 ```
 
-### 3. <span style="font-size:16px">Abra o projeto no VSCode e execute o arquivo 'main.ts' com o comando:</span>
+### 2. <span style="font-size:16px">Execute o projeto:</span>
 
-```powershell
-deno run --allow-all main.ts
+```bash
+npm start run
 ```
 
 # Commands in SPL <sup>_Simple Programming Language_<sup>
@@ -89,9 +85,7 @@ deno run --allow-all main.ts
 
 - `TypeScript` <sub>_Linguagem de Programação_</sub>
 
-- `Deno` <sub>_Ambiente de Execução_</sub>
-
-- `VSCode` <sub>_Editor de Código_</sub>
+- `NodeJS` <sub>_Ambiente de Execução_</sub>
 
 # Project developers
 
