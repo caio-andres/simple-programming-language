@@ -4,7 +4,7 @@ import {
   CallExpr,
   Identifier,
   ObjectLiteral,
-} from "../../frontend/ast.ts";
+} from "../../frontend/ast-nodes.ts";
 import Environment from "../environment.ts";
 import { evaluate } from "../interpreter.ts";
 import {

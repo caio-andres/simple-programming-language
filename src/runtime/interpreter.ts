@@ -10,7 +10,7 @@ import {
   Program,
   Stmt,
   VarDeclaration,
-} from "../frontend/ast.ts";
+} from "../frontend/ast-nodes.ts";
 import Environment from "./environment.ts";
 import {
   eval_function_declaration,

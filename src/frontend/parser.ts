@@ -13,7 +13,7 @@ import {
   Stmt,
   VarDeclaration,
   FunctionDeclaration,
-} from "./ast.ts";
+} from "./ast-nodes.ts";
 
 import { Token, tokenize, TokenType } from "./lexer.ts";
 
