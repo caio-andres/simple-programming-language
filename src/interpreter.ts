@@ -1,6 +1,6 @@
 import { Lexer, TokenType } from "./lexer";
 import { Parser } from "./parser";
-import { ExecutionContext, executeAST } from "./execution";
+import { ExecutionContext, executeAST } from "./executions";
 import { BinaryOpNode, NumberNode, IfNode } from "./ast-nodes";
 
 // Função para converter um nó da AST em JSON
