@@ -4,9 +4,9 @@ import {
   CallExpr,
   Identifier,
   ObjectLiteral,
-} from "../../frontend/ast-nodes.ts";
-import Environment from "../environment.ts";
-import { evaluate } from "../interpreter.ts";
+} from "./ast-nodes.ts";
+import Environment from "./environment.ts";
+import { evaluate } from "./interpreter.ts";
 import {
   FunctionValue,
   MK_NULL,
@@ -14,7 +14,7 @@ import {
   NumberVal,
   ObjectVal,
   RuntimeVal,
-} from "../values.ts";
+} from "./values.ts";
 
 // Avalia expressões binárias numéricas (operações como +, -, *, /, %)
 function eval_numeric_binary_expr(

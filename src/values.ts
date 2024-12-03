@@ -1,5 +1,5 @@
 import Environment from "./environment.ts";
-import { Stmt } from "../frontend/ast-nodes.ts";
+import { Stmt } from "./ast-nodes.ts";
 
 export type ValueType =
   | "null" // Representa valores nulos

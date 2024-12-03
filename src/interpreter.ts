@@ -10,20 +10,20 @@ import {
   Program,
   Stmt,
   VarDeclaration,
-} from "../frontend/ast-nodes.ts";
+} from "./ast-nodes.ts";
 import Environment from "./environment.ts";
 import {
   eval_function_declaration,
   eval_program,
   eval_var_declaration,
-} from "./eval/statements.ts";
+} from "./statements.ts";
 import {
   eval_assignment,
   eval_binary_expr,
   eval_call_expr,
   eval_identifier,
   eval_object_expr,
-} from "./eval/expressions.ts";
+} from "./expressions.ts";
 
 // Função principal de avaliação, que trata cada tipo de nó no AST
 export function evaluate(astNode: Stmt, env: Environment): RuntimeVal {

@@ -1,11 +1,7 @@
-import {
-  FunctionDeclaration,
-  Program,
-  VarDeclaration,
-} from "../../frontend/ast-nodes.ts";
-import Environment from "../environment.ts";
-import { evaluate } from "../interpreter.ts";
-import { FunctionValue, MK_NULL, RuntimeVal } from "../values.ts";
+import { FunctionDeclaration, Program, VarDeclaration } from "./ast-nodes.ts";
+import Environment from "./environment.ts";
+import { evaluate } from "./interpreter.ts";
+import { FunctionValue, MK_NULL, RuntimeVal } from "./values.ts";
 
 // Avalia o programa principal executando as instruções na ordem
 export function eval_program(program: Program, env: Environment): RuntimeVal {

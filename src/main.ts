@@ -1,6 +1,6 @@
-import Parser from "./frontend/parser.ts";
-import { createGlobalEnv } from "./runtime/environment.ts";
-import { evaluate } from "./runtime/interpreter.ts";
+import Parser from "./parser.ts";
+import { createGlobalEnv } from "./environment.ts";
+import { evaluate } from "./interpreter.ts";
 import fs from "node:fs";
 
 run("./src/test/test.txt");
