@@ -3,7 +3,7 @@ interface ASTNode {
   type: string;
 }
 
-class ASTNodeCounter {
+export class ASTNodeCounter {
   private static currentId: number = 0;
 
   public static getNextId(): number {
@@ -11,7 +11,7 @@ class ASTNodeCounter {
   }
 }
 
-class NumberNode implements ASTNode {
+export class NumberNode implements ASTNode {
   id: number;
   constructor(public value: string) {
     this.id = ASTNodeCounter.getNextId();
@@ -19,7 +19,7 @@ class NumberNode implements ASTNode {
   type = "Number";
 }
 
-class NameNode implements ASTNode {
+export class NameNode implements ASTNode {
   id: number;
   constructor(public value: string) {
     this.id = ASTNodeCounter.getNextId();
@@ -27,10 +27,46 @@ class NameNode implements ASTNode {
   type = "Name";
 }
 
-class AssignmentNode implements ASTNode {
+export class AssignmentNode implements ASTNode {
   id: number;
   constructor(public name: NameNode, public value: ASTNode) {
     this.id = ASTNodeCounter.getNextId();
   }
   type = "Assignment";
+}
+
+export class BinaryOpNode implements ASTNode {
+  id: number;
+  constructor(
+    public left: ASTNode,
+    public operator: string,
+    public right: ASTNode
+  ) {
+    this.id = ASTNodeCounter.getNextId();
+  }
+  type = "BinaryOp";
+}
+
+export class ConditionalNode implements ASTNode {
+  id: number;
+  constructor(
+    public left: ASTNode,
+    public operator: string,
+    public right: ASTNode
+  ) {
+    this.id = ASTNodeCounter.getNextId();
+  }
+  type = "Conditional";
+}
+
+export class IfNode implements ASTNode {
+  id: number;
+  constructor(
+    public condition: ASTNode,
+    public thenBranch: ASTNode,
+    public elseBranch: ASTNode | null = null
+  ) {
+    this.id = ASTNodeCounter.getNextId();
+  }
+  type = "If";
 }
