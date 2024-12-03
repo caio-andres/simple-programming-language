@@ -10,8 +10,12 @@ import {
 } from "./ast-nodes";
 import { evaluateBinaryOp, evaluateCondition } from "./utils";
 
+interface VariablesMap {
+  [key: string]: number;
+}
+
 export class ExecutionContext {
-  private variables: { [key: string]: number } = {};
+  private variables: VariablesMap = {};
 
   public setVariable(name: string, value: number) {
     this.variables[name] = value;
