@@ -44,7 +44,7 @@ export class Parser {
     this.eat(TokenType.Then);
     const thenBranch = this.statement(); // Parse do bloco `then`
 
-    let elseBranch = null;
+    let elseBranch: ASTNode | null = null;
     if (this.currentToken.type === TokenType.Else) {
       this.eat(TokenType.Else);
       elseBranch = this.statement(); // Parse do bloco `else`

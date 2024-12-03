@@ -7,6 +7,6 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "start": "tsx ./src/main.ts"
+    "start": "tsx ./src/index.ts"
   }
 }
