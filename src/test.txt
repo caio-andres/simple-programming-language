@@ -1,5 +1,0 @@
-fn multiplicar(x, y) {
-  x * y
-}
-
-multiplicar(5, 10)

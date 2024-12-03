@@ -1,4 +1,4 @@
-interface ASTNode {
+export interface ASTNode {
   id: number;
   type: string;
 }
