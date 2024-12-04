@@ -8,13 +8,19 @@
 git clone https://github.com/caio-andres/simple-programming-language.git
 ```
 
-### Instale as dependências:
+### 2. Vá para o diretório da linguagem:
+
+```bash
+cd language
+```
+
+### 3. Instale as dependências:
 
 ```bash
 npm i
 ```
 
-### 2. Execute o projeto:
+### 4. Execute o projeto:
 
 ```bash
 npm start
