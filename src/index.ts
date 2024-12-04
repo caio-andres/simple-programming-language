@@ -5,7 +5,7 @@ import { interpretProgram } from "./interpreter";
 function main() {
   try {
     // Ler o conteúdo do arquivo .prg
-    const input = fs.readFileSync("test.prg", "utf8");
+    const input = fs.readFileSync("src/test/test.prg", "utf8");
 
     // Passa o conteúdo para o interpretador executar
     interpretProgram(input);
