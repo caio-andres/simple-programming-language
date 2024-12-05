@@ -43,7 +43,7 @@ export function Content() {
                 rel="noopener noreferrer"
                 className="text-monospace"
               >
-                <u>Source Code</u>
+                <u>Source</u>
               </a>
             </div>
           </div>
