@@ -1,0 +1,12 @@
+a {
+  transition: 1s;
+  text-decoration: none;
+}
+
+.table-background {
+  background-color: #00000021
+}
+
+.th-header {
+  background-color: rgba(255, 255, 255, 0.877);
+}

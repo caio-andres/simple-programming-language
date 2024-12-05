@@ -28,22 +28,24 @@ npm start
 
 # Commands
 
-| **SPL <sup>_Simple Programming Language_<sup>** | **JavaScript**                                      | **Description**                                                        |
-| ----------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------- |
-| `let <variable> = <expr>;`                      | `let <variable> = <expr>;`                          | Declaração de variável com inicialização.                              |
-| `const <variable> = <expr>;`                    | `const <variable> = <expr>;`                        | Declaração de constante com inicialização.                             |
-| `let <variable>;`                               | `let <variable>;`                                   | Declaração de variável sem inicialização.                              |
-| `const <variable>;`                             | `const <variable>;`                                 | Declaração de constante sem inicialização (inválido em JS sem valor).  |
-| `fn <variable> (parameter) { <declaration>* }`  | `function <variable>(parameter) { <declaration>* }` | Declaração de função.                                                  |
-| `<variable> = <expr>;`                          | `<variable> = <expr>;`                              | Atribuição de valor a uma variável.                                    |
-| `<expr> <math_operator> <expr>`                 | `<expr> <math_operator> <expr>`                     | Expressões binárias (adição, subtração, multiplicação, etc.).          |
-| `<number>`                                      | `<number>`                                          | Literal numérico.                                                      |
-| `<variable>`                                    | `<variable>`                                        | Identificador (variável, função).                                      |
-| `(<expr>)`                                      | `(<expr>)`                                          | Expressão entre parênteses.                                            |
-| `{ <property_list> }`                           | `{ <property_list> }`                               | Objeto literal.                                                        |
-| `<variable> (parameter)`                        | `<variable>(parameter)`                             | Chamada de função.                                                     |
-| `<variable> ":" <expr>`                         | `<variable>: <expr>`                                | Definição de propriedades de um objeto (no SPL usa ":", no JS também). |
-| `+`, `-`, `*`, `/`, `%`                         | `+`, `-`, `*`, `/`, `%`                             | Operadores binários.                                                   |
+| **SPL (Linguagem)**     | **Descrição**                                                                                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<program>`             | Representa um programa composto por uma ou mais declarações.                                                                                             |
+| `<statement>`           | Uma instrução no programa, que pode ser uma atribuição, uma expressão seguida de ponto e vírgula, ou uma estrutura de controle (`if`, `while`, `print`). |
+| `<assignment>`          | Declaração de atribuição que associa o valor de uma expressão a um identificador.                                                                        |
+| `<if_statement>`        | Estrutura condicional que avalia uma condição e executa um bloco de instruções com suporte opcional ao bloco `else`.                                     |
+| `<while_statement>`     | Estrutura de repetição que executa um bloco de instruções enquanto a condição especificada for verdadeira.                                               |
+| `<print_statement>`     | Imprime o valor de uma expressão ou string no console.                                                                                                   |
+| `<expression>`          | Representa uma operação matemática, podendo conter termos com operadores de soma ou subtração.                                                           |
+| `<term>`                | Parte de uma expressão envolvendo multiplicação ou divisão de fatores.                                                                                   |
+| `<factor>`              | Elemento base de uma expressão: número, nome, string ou outra expressão entre parênteses.                                                                |
+| `<conditional>`         | Expressão booleana que avalia condições lógicas usando operadores `OR`.                                                                                  |
+| `<bool_term>`           | Subexpressão booleana usando operador lógico `AND`.                                                                                                      |
+| `<bool_factor>`         | Representa uma comparação entre duas expressões usando operadores relacionais.                                                                           |
+| `<relational_operator>` | Operadores relacionais utilizados para comparar valores (`==`, `!=`, `<`, `<=`, `>`, `>=`).                                                              |
+| `<number>`              | Literal numérico composto por dígitos de 0 a 9.                                                                                                          |
+| `<name>`                | Identificador válido começando com uma letra ou sublinhado, seguido por letras, números ou sublinhados.                                                  |
+| `<string>`              | Literal de string delimitada por aspas duplas.                                                                                                           |
 
 # How it work?
 
