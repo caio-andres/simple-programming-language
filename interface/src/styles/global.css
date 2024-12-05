@@ -1,0 +1,27 @@
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-image: linear-gradient(to right, #0b0b0c, #161b2b);
+  color: rgb(234, 234, 236);
+  font-family: "Arimo";
+}
+
+@keyframes moveAround {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg) scale(0.88);
+  }
+  25% {
+    transform: rotateY(3deg) rotateX(-3deg) scale(0.95);
+  }
+  50% {
+    transform: rotateY(0deg) rotateX(0deg) scale(0.99);
+  }
+  75% {
+    transform: rotateY(-3deg) rotateX(3deg) scale(1);
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(0deg) scale(0.88);
+  }
+}
