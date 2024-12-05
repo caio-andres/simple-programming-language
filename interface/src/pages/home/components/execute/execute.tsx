@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import reset from "../../../../../public/media/svg/reset.svg";
+import { handleRefreshClick } from "../function/refresh";
 
 const serverPort = 3000;
 
@@ -19,15 +21,22 @@ export const Execute: React.FC = () => {
   };
 
   return (
-    <div className="mt-5">
-      <button className="btn btn-secondary mb-5" onClick={jsonButton}>
-        Executar
-      </button>
-
-      {/* Formatando o JSON da resposta do terminal */}
+    <div className="container mt-5">
+      <div className="mb-5">
+        <button className="btn btn-primary" onClick={jsonButton}>
+          Executar
+        </button>
+        <button className="btn btn-secondary ml-2" onClick={handleRefreshClick}>
+          <img src={reset} alt="Reset" />
+        </button>
+      </div>
       {jsonMessage ? (
-        <pre className="text-light p-2 bg-dark">
-          {JSON.stringify(jsonMessage, null, 2)}
+        /* Formatando o JSON da resposta do terminal */
+        <pre
+          className="text-light p-2 bg-dark border border-light d-flex"
+          style={{ fontSize: "1.2rem", borderRadius: "20px" }}
+        >
+          {JSON.stringify(jsonMessage, null, 10)}
         </pre>
       ) : (
         <div style={{ userSelect: "none" }}>

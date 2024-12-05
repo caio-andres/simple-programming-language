@@ -1,13 +1,15 @@
 {
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "fs": "^0.0.1-security",
+    "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "tsc": "^2.0.4",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "start": "tsx ./src/index.ts"
+    "start": "npx tsx ./src/index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
