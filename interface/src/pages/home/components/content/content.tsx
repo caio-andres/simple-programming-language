@@ -2,18 +2,23 @@ import spl from "../../../../../public/media/svg/spl.svg";
 import github from "../../../../../public/media/svg/github.svg";
 import { Backnorym } from "./styles";
 import "./content.css";
-import { Commands } from "../modals/commands";
+import { BNF } from "../modals/bnf";
 import { useState } from "react";
 
 export function Content() {
-  const [openCommands, setOpenCommands] = useState(false);
+  const [openBNF, setOpenBNF] = useState(false);
 
   return (
     <>
       <main className="d-flex flex-column" style={{ gap: "2rem" }}>
         <div className="d-flex justify-content-between">
           <div className="d-flex">
-            <img src={spl} width={50} alt="SPL logo" />
+            <img
+              style={{ userSelect: "none" }}
+              src={spl}
+              width={50}
+              alt="SPL logo"
+            />
             <h1>SPL</h1>
             <Backnorym className="text-monospace">
               Simple Programming Language
@@ -23,10 +28,10 @@ export function Content() {
             <div className="container mt-2">
               <button
                 className="d-flex btn btn-primary"
-                onClick={() => setOpenCommands(true)}
+                onClick={() => setOpenBNF(true)}
                 style={{ cursor: "pointer" }}
               >
-                Comandos
+                BNF 📃
               </button>
             </div>
             <div>
@@ -43,7 +48,7 @@ export function Content() {
                 rel="noopener noreferrer"
                 className="text-monospace"
               >
-                <u>Source</u>
+                <u>Code</u>
               </a>
             </div>
           </div>
@@ -52,10 +57,10 @@ export function Content() {
 
       {/* MODAL */}
 
-      <Commands
-        openCommands={openCommands}
-        onClose={() => setOpenCommands(false)}
-        setOpenCommands={() => setOpenCommands(false)}
+      <BNF
+        openBNF={openBNF}
+        onClose={() => setOpenBNF(false)}
+        setOpenBNF={() => setOpenBNF(false)}
       />
     </>
   );

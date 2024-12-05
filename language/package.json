@@ -8,5 +8,10 @@
   },
   "scripts": {
     "start": "tsx ./src/index.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "pm2": "^5.4.3"
   }
 }

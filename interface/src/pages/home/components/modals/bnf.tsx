@@ -2,26 +2,22 @@ import { Modal, Button } from "react-bootstrap";
 import { Table } from "../content/styles";
 
 interface Props {
-  openCommands: boolean;
+  openBNF: boolean;
   onClose: () => void;
-  setOpenCommands: (value: boolean) => void;
+  setOpenBNF: (value: boolean) => void;
 }
 
-export const Commands: React.FC<Props> = ({
-  openCommands,
-  onClose,
-  setOpenCommands,
-}) => {
+export const BNF: React.FC<Props> = ({ openBNF, onClose, setOpenBNF }) => {
   return (
     <Modal
       size="lg"
-      show={openCommands}
+      show={openBNF}
       onHide={onClose}
       centered={true}
       contentClassName="bg-dark"
     >
       <Modal.Header style={{ borderBottom: "solid #10131B" }}>
-        <Modal.Title className="fs-6">Comandos</Modal.Title>
+        <Modal.Title className="fs-6">BNF</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -145,10 +141,7 @@ export const Commands: React.FC<Props> = ({
       </Modal.Body>
 
       <Modal.Footer style={{ borderTop: "solid #10131B" }}>
-        <Button
-          className="link-close-btn"
-          onClick={() => setOpenCommands(false)}
-        >
+        <Button className="link-close-btn" onClick={() => setOpenBNF(false)}>
           Fechar
         </Button>
       </Modal.Footer>
