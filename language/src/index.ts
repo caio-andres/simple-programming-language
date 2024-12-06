@@ -1,15 +1,9 @@
 // index.ts
-import * as fs from "fs";
+import fs from "fs";
 import { interpretProgram } from "./interpreter";
-import express from "express";
-import cors from "cors";
+import { executeHTTP, refreshHTTP } from "./routes";
 
-const app = express();
-app.use(cors());
-
-const port = 3000;
-
-const main = () => {
+export const main = () => {
   try {
     // Ler o conteúdo do arquivo .prg
     const input = fs.readFileSync("src/test/test.prg", "utf8");
@@ -22,13 +16,6 @@ const main = () => {
   }
 };
 
-// Porta localhost (3000) e rota
-app.listen(port, () => {
-  console.log(`Server na porta: ${port}`);
-});
-
-// Executar o resultado do terminal
-app.get("/execute", (req, res) => {
-  const output = main();
-  res.send(output);
-});
+// Executando as rotas HTTP, vindas de routes.ts
+executeHTTP();
+refreshHTTP();

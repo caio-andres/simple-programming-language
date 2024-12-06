@@ -6,5 +6,3 @@ export const Backnorym = styled.span`
     display: none;
   }
 `;
-
-export const Table = styled.table``;

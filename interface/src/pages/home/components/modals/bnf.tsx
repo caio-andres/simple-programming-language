@@ -1,5 +1,5 @@
 import { Modal, Button } from "react-bootstrap";
-import { Table } from "../content/styles";
+import "./bnf.css";
 
 interface Props {
   openBNF: boolean;
@@ -21,123 +21,113 @@ export const BNF: React.FC<Props> = ({ openBNF, onClose, setOpenBNF }) => {
       </Modal.Header>
 
       <Modal.Body>
-        <Table border={1}>
-          <thead className="th-header">
-            <tr>
-              <th scope="col" className="text-dark">
-                SPL
-              </th>
-              <th scope="col" className="text-dark">
-                Descrição
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>&lt;program&gt;</td>
-              <td>
-                Representa um programa composto por uma ou mais declarações.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;statement&gt;</td>
-              <td>
-                Uma instrução no programa, que pode ser uma atribuição, uma
-                expressão seguida de ponto e vírgula, ou uma estrutura de
-                controle (&lt;if&gt;, &lt;while&gt;, &lt;print&gt;).
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;assignment&gt;</td>
-              <td>
-                Declaração de atribuição que associa o valor de uma expressão a
-                um identificador.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;if_statement&gt;</td>
-              <td>
-                Estrutura condicional que avalia uma condição e executa um bloco
-                de instruções com suporte opcional ao bloco &lt;else&gt;.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;while_statement&gt;</td>
-              <td>
-                Estrutura de repetição que executa um bloco de instruções
-                enquanto a condição especificada for verdadeira.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;print_statement&gt;</td>
-              <td>Imprime o valor de uma expressão ou string no console.</td>
-            </tr>
-            <tr>
-              <td>&lt;expression&gt;</td>
-              <td>
-                Representa uma operação matemática, podendo conter termos com
-                operadores de soma ou subtração.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;term&gt;</td>
-              <td>
-                Parte de uma expressão envolvendo multiplicação ou divisão de
-                fatores.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;factor&gt;</td>
-              <td>
-                Elemento base de uma expressão: número, nome, string ou outra
-                expressão entre parênteses.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;conditional&gt;</td>
-              <td>
-                Expressão booleana que avalia condições lógicas usando
-                operadores &quot;OR&quot;.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;bool_term&gt;</td>
-              <td>
-                Subexpressão booleana usando operador lógico &quot;AND&quot;.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;bool_factor&gt;</td>
-              <td>
-                Representa uma comparação entre duas expressões usando
-                operadores relacionais.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;relational_operator&gt;</td>
-              <td>
-                Operadores relacionais utilizados para comparar valores
-                (&quot;==&quot;, &quot;!=&quot;, &quot;&lt;&quot;,
-                &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;).
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;number&gt;</td>
-              <td>Literal numérico composto por dígitos de 0 a 9.</td>
-            </tr>
-            <tr>
-              <td>&lt;name&gt;</td>
-              <td>
-                Identificador válido começando com uma letra ou sublinhado,
-                seguido por letras, números ou sublinhados.
-              </td>
-            </tr>
-            <tr>
-              <td>&lt;string&gt;</td>
-              <td>Literal de string delimitada por aspas duplas.</td>
-            </tr>
-          </tbody>
-        </Table>
+        <div className="container mt-5">
+          <ul className="list-unstyled">
+            <li>
+              <strong>&lt;program&gt;</strong> ::={" "}
+              <code>&lt;statement&gt;</code> | <code>&lt;statement&gt;</code>{" "}
+              <code>&lt;program&gt;</code>
+            </li>
+            <li>
+              <strong>&lt;statement&gt;</strong> ::=
+              <ul className="ms-4">
+                <li>
+                  <code>&lt;assignment&gt;</code>
+                </li>
+                <li>
+                  <code>&lt;expression&gt;</code> <code>";"</code>
+                </li>
+                <li>
+                  <code>&lt;if_statement&gt;</code>
+                </li>
+                <li>
+                  <code>&lt;while_statement&gt;</code>
+                </li>
+                <li>
+                  <code>&lt;print_statement&gt;</code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>&lt;assignment&gt;</strong> ::= <code>&lt;name&gt;</code>{" "}
+              <code>"="</code> <code>&lt;expression&gt;</code> <code>";"</code>
+            </li>
+            <li>
+              <strong>&lt;if_statement&gt;</strong> ::= <code>"if"</code>{" "}
+              <code>&lt;conditional&gt;</code> <code>"then"</code>{" "}
+              <code>&lt;statement&gt;</code> [<code>"else"</code>{" "}
+              <code>&lt;statement&gt;</code>] [<code>";"</code>]
+            </li>
+            <li>
+              <strong>&lt;while_statement&gt;</strong> ::= <code>"while"</code>{" "}
+              <code>&lt;conditional&gt;</code> <code>"do"</code>{" "}
+              <code>&lt;statement&gt;</code> [<code>";"</code>]
+            </li>
+            <li>
+              <strong>&lt;print_statement&gt;</strong> ::= <code>"print"</code>{" "}
+              (<code>&lt;expression&gt;</code> | <code>&lt;string&gt;</code>){" "}
+              <code>";"</code>
+            </li>
+            <li>
+              <strong>&lt;expression&gt;</strong> ::= <code>&lt;term&gt;</code>{" "}
+              &#123;<code>"+"</code> | <code>"-"</code>&#125;{" "}
+              <code>&lt;term&gt;</code>
+            </li>
+            <li>
+              <strong>&lt;term&gt;</strong> ::= <code>&lt;factor&gt;</code>{" "}
+              &#123;<code>"*"</code> | <code>"/"</code>&#125;{" "}
+              <code>&lt;factor&gt;</code>
+            </li>
+            <li>
+              <strong>&lt;factor&gt;</strong> ::=
+              <ul className="ms-4">
+                <li>
+                  <code>&lt;number&gt;</code>
+                </li>
+                <li>
+                  <code>&lt;name&gt;</code>
+                </li>
+                <li>
+                  <code>&lt;string&gt;</code>
+                </li>
+                <li>
+                  ( <code>&lt;expression&gt;</code> )
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>&lt;conditional&gt;</strong> ::={" "}
+              <code>&lt;bool_term&gt;</code> {<code>"OR"</code>}{" "}
+              <code>&lt;bool_term&gt;</code>
+            </li>
+            <li>
+              <strong>&lt;bool_term&gt;</strong> ::={" "}
+              <code>&lt;bool_factor&gt;</code> {<code>"AND"</code>}{" "}
+              <code>&lt;bool_factor&gt;</code>
+            </li>
+            <li>
+              <strong>&lt;bool_factor&gt;</strong> ::={" "}
+              <code>&lt;expression&gt;</code>{" "}
+              <code>&lt;relational_operator&gt;</code>{" "}
+              <code>&lt;expression&gt;</code>
+            </li>
+            <li>
+              <strong>&lt;relational_operator&gt;</strong> ::= <code>"=="</code>{" "}
+              | <code>"!="</code> | <code>"&lt;"</code> | <code>"&lt;="</code> |{" "}
+              <code>"&gt;"</code> | <code>"&gt;="</code>
+            </li>
+            <li>
+              <strong>&lt;number&gt;</strong> ::= <code>[0-9]+</code>
+            </li>
+            <li>
+              <strong>&lt;name&gt;</strong> ::={" "}
+              <code>[a-zA-Z_][a-zA-Z0-9_]*</code>
+            </li>
+            <li>
+              <strong>&lt;string&gt;</strong> ::= <code>"&quot;.*&quot;"</code>
+            </li>
+          </ul>
+        </div>
       </Modal.Body>
 
       <Modal.Footer style={{ borderTop: "solid #10131B" }}>

@@ -9,11 +9,18 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "start": "npx tsx ./src/index.ts"
+    "start": "tsx ./src/index.ts"
   },
   "dependencies": {
+    "childprocess": "^2.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "pm2": "^5.4.3"
-  }
+  },
+  "name": "language",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
