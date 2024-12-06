@@ -7,56 +7,51 @@ import ReactJson from "react-json-view";
 const serverPort = 3000;
 
 export const Execute: React.FC = () => {
-  const [jsonMessage, setJsonMessage] = useState<string>();
-  const [parsedJson, setParsedJson] = useState<object>({});
+  const [textAreaValue, setTextAreaValue] = useState<string>();
+  const [json, setJson] = useState<object>({});
 
   // Devolver o JSON na página
-  const jsonButton = async () => {
+  const execute = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:${serverPort}/execute`
-      );
-      setJsonMessage(response.data);
-
-      const data =
-        typeof response.data === "string"
-          ? JSON.parse(response.data)
-          : response.data;
-      setParsedJson(data);
+      const response = await axios.post(`http://localhost:${serverPort}/read`, {
+        code: textAreaValue, // O texto do textarea deve estar nesta variável
+      });
+      setJson(response.data);
     } catch (err) {
       console.error("Erro ao buscar dados do servidor:", err);
     }
   };
 
-  const refreshButton = async () => {
-    try {
-      await axios.get(`http://localhost:${serverPort}/refresh`);
-    } catch (err) {
-      console.error("Erro ao dar refresh no terminal:", err);
-    }
-  };
-
   return (
-    <div className="container mt-5 w-50">
+    <div className="container mt-5">
+      <textarea
+        className="form-control mb-3"
+        rows={15}
+        placeholder="Digite o seu código SPL aqui..."
+        value={textAreaValue}
+        onChange={(e) => setTextAreaValue(e.target.value)}
+      />
       <div className="mb-5">
-        <button className="btn btn-primary" onClick={jsonButton}>
+        <button className="btn btn-primary" onClick={execute}>
           Executar
         </button>
-        <button className="btn btn-secondary ml-2" onClick={refreshButton}>
+        <button className="btn btn-secondary ml-2" onClick={handleRefreshClick}>
           <img src={reset} alt="Reset" />
         </button>
       </div>
-      {jsonMessage ? (
+
+      {json ? (
         /* Formatando o JSON da resposta do terminal */
-        <ReactJson
-          src={parsedJson}
-          style={{ borderRadius: "10px" }}
-          theme="google"
-        />
+        <pre className="d-flex justify-content-center">
+          <ReactJson
+            src={json}
+            style={{ borderRadius: "10px", padding: "0.4rem" }}
+            theme="google"
+          />
+        </pre>
       ) : (
-        <div style={{ userSelect: "none" }}>
-          <h4 className="font-4">⬆️</h4>
-          <p className="text-monospace">Execute o código</p>
+        <div className="alert alert-danger" role="alert">
+          <strong>Erro:</strong> há um problema na sintaxe.
         </div>
       )}
     </div>

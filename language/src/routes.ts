@@ -1,10 +1,11 @@
 import express from "express";
 import cors from "cors";
-import { main } from "./index.ts";
-import { exec } from "childprocess";
+import { interpretProgram } from "./interpreter.ts";
 
 const app = express();
-app.use(cors());
+
+// Habilitando cors e o middleware
+app.use(cors(), express.json());
 
 const port = 3000;
 
@@ -13,16 +14,19 @@ app.listen(port, () => {
   console.log(`Server na porta: ${port}`);
 });
 
-// Executar o resultado do terminal
-export const executeHTTP = () => {
-  app.get("/execute", (req, res) => {
-    const output = main();
-    res.send(output);
-  });
-};
+// Interpretar textarea presente no frontend
+export const readHTTP = () => {
+  app.post("/read", (req, res) => {
+    const { code } = req.body;
+    if (!code) {
+      return res.status(400).send({ error: "Nenhum código enviado." });
+    }
 
-export const refreshHTTP = () => {
-  app.get("/refresh", (req, res) => {
-    exec("npm start");
+    try {
+      const output = interpretProgram(code);
+      res.send(output);
+    } catch (err) {
+      console.error("Erro ao ler código:", err);
+    }
   });
 };
