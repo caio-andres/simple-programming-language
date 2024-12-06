@@ -32,7 +32,26 @@ npm start
 cd interface
 ```
 
-### 6.
+### 6. Instale as dependências:
+
+```bash
+npm i
+```
+
+### 7. Execute o projeto:
+
+```bash
+npm run dev
+```
+
+### 8. Abra o browser pelo terminal:
+
+```bash
+# pressione estas teclas:
+O + enter
+```
+
+Enjoy!
 
 # Commands
 
