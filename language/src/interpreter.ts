@@ -1,7 +1,14 @@
 import { Lexer, TokenType } from "./lexer";
 import { Parser } from "./parser";
 import { ExecutionContext, executeAST } from "./executions";
-import { BinaryOpNode, NumberNode, IfNode } from "./ast-nodes";
+import {
+  BinaryOpNode,
+  NumberNode,
+  IfNode,
+  ConditionalNode,
+  AssignmentNode,
+  NameNode,
+} from "./ast-nodes";
 
 // Função para converter um nó da AST em JSON
 function astNodeToJson(node: any): any {
@@ -29,6 +36,33 @@ function astNodeToJson(node: any): any {
       condition: astNodeToJson(node.condition),
       thenBranch: astNodeToJson(node.thenBranch),
       elseBranch: astNodeToJson(node.elseBranch),
+    };
+  }
+
+  if (node instanceof AssignmentNode) {
+    return {
+      type: "AssignmentNode",
+      name: node.name,
+      value: node.value,
+    };
+  }
+
+  if (node instanceof NameNode) {
+    return {
+      type: {
+        id: node.id,
+        typeName: node.type,
+        value: node.value,
+      },
+    };
+  }
+
+  if (node instanceof ConditionalNode) {
+    return {
+      type: "ConditionalNode",
+      operator: node.operator,
+      left: astNodeToJson(node.left),
+      right: astNodeToJson(node.right),
     };
   }
 

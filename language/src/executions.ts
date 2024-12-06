@@ -44,6 +44,7 @@ export function executeAST(node: ASTNode, context: ExecutionContext): number {
     return value;
   } else if (node instanceof IfNode) {
     const conditionResult = executeAST(node.condition, context);
+
     if (conditionResult) {
       return executeAST(node.thenBranch, context);
     } else if (node.elseBranch) {
@@ -54,5 +55,6 @@ export function executeAST(node: ASTNode, context: ExecutionContext): number {
     const right = executeAST(node.right, context);
     return evaluateCondition(node.operator, left, right) ? 1 : 0;
   }
+
   throw new Error("Unsupported AST node.");
 }
