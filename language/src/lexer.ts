@@ -16,6 +16,8 @@ export enum TokenType {
   If = "IF",
   Else = "ELSE",
   Then = "THEN",
+  While = "WHILE",
+  Do = "DO",
 }
 
 export class Token {
