@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { interpretProgram } from "./interpreter.ts";
+import { ASTNodeCounter } from "./ast-nodes.ts";
 
 const app = express();
 
@@ -23,6 +24,7 @@ export const readHTTP = () => {
     }
 
     try {
+      ASTNodeCounter.resetId();
       const output = interpretProgram(code);
       res.send(output);
     } catch (err) {

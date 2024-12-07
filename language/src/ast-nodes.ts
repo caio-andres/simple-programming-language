@@ -9,6 +9,10 @@ export class ASTNodeCounter {
   public static getNextId(): number {
     return ++this.currentId;
   }
+
+  public static resetId(): void {
+    this.currentId = 0;
+  }
 }
 
 export class NumberNode implements ASTNode {
