@@ -8,6 +8,7 @@ import {
   ConditionalNode,
   AssignmentNode,
   NameNode,
+  WhileNode,
 } from "./ast-nodes";
 
 // Função para converter um nó da AST em JSON
@@ -63,6 +64,14 @@ function astNodeToJson(node: any): any {
       operator: node.operator,
       left: astNodeToJson(node.left),
       right: astNodeToJson(node.right),
+    };
+  }
+
+  if (node instanceof WhileNode) {
+    return {
+      type: "WhileNode",
+      condition: astNodeToJson(node.condition),
+      doBranch: astNodeToJson(node.doBranch),
     };
   }
 

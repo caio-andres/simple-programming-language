@@ -7,6 +7,7 @@ import {
   AssignmentNode,
   IfNode,
   ConditionalNode,
+  WhileNode,
 } from "./ast-nodes";
 import { evaluateBinaryOp, evaluateCondition } from "./utils";
 
@@ -49,6 +50,11 @@ export function executeAST(node: ASTNode, context: ExecutionContext): number {
       return executeAST(node.thenBranch, context);
     } else if (node.elseBranch) {
       return executeAST(node.elseBranch, context);
+    }
+  } else if (node instanceof WhileNode) {
+    let result: number = 0;
+    while (executeAST(node.condition, context)) {
+      result = executeAST(node.doBranch, context);
     }
   } else if (node instanceof ConditionalNode) {
     const left = executeAST(node.left, context);

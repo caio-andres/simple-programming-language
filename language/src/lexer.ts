@@ -65,6 +65,8 @@ export class Lexer {
     if (result === "if") return new Token(TokenType.If, result); // implementação do IF
     if (result === "else") return new Token(TokenType.Else, result); // implementação do IF
     if (result === "then") return new Token(TokenType.Then, result); // implementação do IF
+    if (result == "while") return new Token(TokenType.While, result); // Implementação do WHILE
+    if (result == "do") return new Token(TokenType.Do, result); // Implementação de DO
 
     return new Token(TokenType.Name, result);
   }
