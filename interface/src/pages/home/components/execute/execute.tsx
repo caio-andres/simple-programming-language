@@ -71,52 +71,52 @@ export const Execute: React.FC = () => {
           value={textAreaValue}
           onChange={(e) => setTextAreaValue(e.target.value)}
         />
-        {json ? (
-          <div style={{ textAlign: "left" }}>
-            <h2 className="text-monospaced">AST</h2>
-            <div className="rounded">
-              <ReactJson
-                displayObjectSize
-                src={json}
-                style={{
-                  maxHeight: "250px",
-                  overflow: "auto",
-                  borderRadius: "10px",
-                  padding: "0.4rem",
-                  border: "1px solid #30323b",
-                  borderBottom: "5px solid #595a5f",
-                }}
-                theme="google"
-              />
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
       </div>
 
       <div className="container d-flex flex-column">
-        {variables ? (
-          /* Formatando o JSON da resposta do terminal */
-          <div className="d-flex flex-column">
-            <div className="d-flex justify-content-between">
-              <h2>Resultado</h2>
+        {variables && json ? (
+          <>
+            <div className="d-flex flex-column">
+              <div className="d-flex justify-content-between">
+                <h2>Resultado</h2>
+              </div>
+              <div
+                className="p-3 bg-dark rounded"
+                style={{
+                  border: "1px solid #727272",
+                  textAlign: "left",
+                  height: "300px",
+                  maxHeight: "610px",
+                  overflow: "auto",
+                }}
+              >
+                {variables.map((result, index) => (
+                  <React.Fragment key={index}>
+                    {result}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
-            <div
-              className="p-3 bg-dark rounded text-monospaced"
-              style={{
-                border: "1px solid #727272",
-                textAlign: "left",
-              }}
-            >
-              {variables.map((result, index) => (
-                <React.Fragment key={index}>
-                  {result}
-                  <br />
-                </React.Fragment>
-              ))}
+            <div className="mt-3" style={{ textAlign: "left" }}>
+              <h2>AST</h2>
+              <div className="rounded">
+                <ReactJson
+                  displayObjectSize
+                  src={json}
+                  style={{
+                    maxHeight: "250px",
+                    overflow: "auto",
+                    borderRadius: "10px",
+                    padding: "0.4rem",
+                    border: "1px solid #30323b",
+                    borderBottom: "5px solid #595a5f",
+                  }}
+                  theme="google"
+                />
+              </div>
             </div>
-          </div>
+          </>
         ) : (
           <div
             className="alert alert-danger d-flex justify-content-center mt-5"
