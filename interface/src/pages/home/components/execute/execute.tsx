@@ -11,7 +11,6 @@ export const Execute: React.FC = () => {
   const [textAreaValue, setTextAreaValue] = useState<string>();
   const [json, setJson] = useState<object>({});
   const [variables, setVariables] = useState<string[]>([]);
-  const [expanded, setExpanded] = useState<boolean>(false);
 
   // Devolver o JSON na página
   const executeJson = async () => {
@@ -67,26 +66,28 @@ export const Execute: React.FC = () => {
         </div>
         <textarea
           className="form-control mb-3"
-          style={{ height: "400px" }}
+          style={{ height: "300px" }}
           placeholder="Digite o seu código SPL aqui... ✍🏻"
           value={textAreaValue}
           onChange={(e) => setTextAreaValue(e.target.value)}
         />
-        {variables ? (
-          <div className="mb-4" style={{ textAlign: "left" }}>
-            <h2 className="text-monospaced">Resultado</h2>
-            <div
-              className="p-3 bg-dark rounded text-monospaced"
-              style={{
-                border: "1px solid #727272",
-              }}
-            >
-              {variables.map((result, index) => (
-                <React.Fragment key={index}>
-                  {result}
-                  <br />
-                </React.Fragment>
-              ))}
+        {json ? (
+          <div style={{ textAlign: "left" }}>
+            <h2 className="text-monospaced">AST</h2>
+            <div className="rounded">
+              <ReactJson
+                displayObjectSize
+                src={json}
+                style={{
+                  maxHeight: "250px",
+                  overflow: "auto",
+                  borderRadius: "10px",
+                  padding: "0.4rem",
+                  border: "1px solid #30323b",
+                  borderBottom: "5px solid #595a5f",
+                }}
+                theme="google"
+              />
             </div>
           </div>
         ) : (
@@ -95,39 +96,25 @@ export const Execute: React.FC = () => {
       </div>
 
       <div className="container d-flex flex-column">
-        {json ? (
+        {variables ? (
           /* Formatando o JSON da resposta do terminal */
           <div className="d-flex flex-column">
             <div className="d-flex justify-content-between">
-              <h2>AST</h2>
-              <button
-                className="btn btn-secondary mb-2"
-                onClick={() => setExpanded(!expanded)}
-                style={{
-                  cursor: "pointer",
-                  backgroundColor: "#595a5f",
-                  border: "1px solid #30323b",
-                  color: "#FFF",
-                }}
-              >
-                {expanded ? "Ver menos" : "Ver mais"}
-              </button>
+              <h2>Resultado</h2>
             </div>
             <div
+              className="p-3 bg-dark rounded text-monospaced"
               style={{
-                maxHeight: expanded ? "none" : "400px",
-                overflow: "hidden",
-                border: "1px solid #30323b",
-                borderBottom: "5px solid #595a5f",
+                border: "1px solid #727272",
+                textAlign: "left",
               }}
-              className="rounded"
             >
-              <ReactJson
-                displayObjectSize
-                src={json}
-                style={{ borderRadius: "10px", padding: "0.4rem" }}
-                theme="google"
-              />
+              {variables.map((result, index) => (
+                <React.Fragment key={index}>
+                  {result}
+                  <br />
+                </React.Fragment>
+              ))}
             </div>
           </div>
         ) : (
