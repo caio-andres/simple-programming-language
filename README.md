@@ -35,7 +35,8 @@ cd interface
 ### 6. Instale as dependências:
 
 ```bash
-npm i
+# É necessário utilizar este comando para que a dependência react-json-view não tenha conflito de versões com o react e a dependência flux
+npm i react-json-view --legacy-peer-deps
 ```
 
 ### 7. Execute o projeto:
