@@ -73,8 +73,8 @@ function astNodeToJson(node: any): any {
   };
 }
 
-// Função para interpretar o conteúdo do programa e gerar a AST em JSON
-export function interpretProgram(input: string) {
+// Função para interpretar o conteúdo do programa da AST em JSON
+export function interpretProgramAst(input: string) {
   try {
     const context = new ExecutionContext();
     const lexer = new Lexer(input);
@@ -93,15 +93,39 @@ export function interpretProgram(input: string) {
     // console.log("AST em JSON:");
     // console.log(astJson);
 
-    // Exibir o resultado final de todas as variáveis armazenadas no contexto
+    return astJson;
+  } catch (error) {
+    console.error("Erro durante a execução de astJson:");
+    console.error(error);
+  }
+}
+
+// Função para interpretar o conteúdo do programa do resultado das variáveis ([key: string]: number)
+export function interpretProgramVariables(input: string) {
+  try {
+    const context = new ExecutionContext();
+    const lexer = new Lexer(input);
+    const parser = new Parser(lexer);
+
+    const astNodes = [];
+    while (lexer.lookAhead().type !== TokenType.EOF) {
+      const astNode = parser.parse();
+      astNodes.push(astNodeToJson(astNode));
+      executeAST(astNode, context);
+    }
+
     console.log("Valores das variáveis:");
     for (const [name, value] of Object.entries(context["variables"])) {
       console.log(`${name}: ${value}`);
     }
 
-    return astJson;
+    const variablesValues = Object.entries(context["variables"]).map(
+      ([name, value]) => `${name}: ${value}`
+    );
+
+    return variablesValues;
   } catch (error) {
-    console.error("Erro durante a execução:");
+    console.error("Erro durante a execução de variablesValues:");
     console.error(error);
   }
 }

@@ -1,10 +1,10 @@
 import { Execute } from "./components/execute/execute";
-import { Content } from "./components/content/content";
+import { Header } from "./components/header/header";
 
 export function Home() {
   return (
     <>
-      <Content />
+      <Header />
       <Execute />
     </>
   );
