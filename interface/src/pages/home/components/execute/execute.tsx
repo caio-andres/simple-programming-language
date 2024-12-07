@@ -123,6 +123,7 @@ export const Execute: React.FC = () => {
               className="rounded"
             >
               <ReactJson
+                displayObjectSize
                 src={json}
                 style={{ borderRadius: "10px", padding: "0.4rem" }}
                 theme="google"

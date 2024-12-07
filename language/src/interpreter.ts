@@ -73,14 +73,15 @@ function astNodeToJson(node: any): any {
   };
 }
 
+const astNodes = []; // Armazenar todos os nós
+const context = new ExecutionContext(); // executando o mapeamento as variáveis de acorda com o contexto
+
 // Função para interpretar o conteúdo do programa da AST em JSON
 export function interpretProgramAst(input: string) {
   try {
-    const context = new ExecutionContext();
     const lexer = new Lexer(input);
     const parser = new Parser(lexer);
 
-    const astNodes = [];
     while (lexer.lookAhead().type !== TokenType.EOF) {
       const astNode = parser.parse();
       astNodes.push(astNodeToJson(astNode));
@@ -103,11 +104,9 @@ export function interpretProgramAst(input: string) {
 // Função para interpretar o conteúdo do programa do resultado das variáveis ([key: string]: number)
 export function interpretProgramVariables(input: string) {
   try {
-    const context = new ExecutionContext();
     const lexer = new Lexer(input);
     const parser = new Parser(lexer);
 
-    const astNodes = [];
     while (lexer.lookAhead().type !== TokenType.EOF) {
       const astNode = parser.parse();
       astNodes.push(astNodeToJson(astNode));
