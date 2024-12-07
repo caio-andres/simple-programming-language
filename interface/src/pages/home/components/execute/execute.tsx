@@ -73,7 +73,7 @@ export const Execute: React.FC = () => {
           onChange={(e) => setTextAreaValue(e.target.value)}
         />
         {variables ? (
-          <div style={{ textAlign: "left" }}>
+          <div className="mb-4" style={{ textAlign: "left" }}>
             <h2 className="text-monospaced">Resultado</h2>
             <div
               className="p-3 bg-dark rounded text-monospaced"
