@@ -27,7 +27,7 @@ export function Header() {
           <div className="d-flex align-items-center text-monospace">
             <div className="container mt-2">
               <button
-                className="d-flex btn btn-primary"
+                className="d-flex btn btn-info"
                 onClick={() => setOpenBNF(true)}
                 style={{ cursor: "pointer" }}
               >

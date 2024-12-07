@@ -56,6 +56,7 @@ export function executeAST(node: ASTNode, context: ExecutionContext): number {
     while (executeAST(node.condition, context)) {
       result = executeAST(node.doBranch, context);
     }
+    return result;
   } else if (node instanceof ConditionalNode) {
     const left = executeAST(node.left, context);
     const right = executeAST(node.right, context);
