@@ -1,12 +1,12 @@
 import spl from "../../../../../public/media/svg/spl.svg";
 import github from "../../../../../public/media/svg/github.svg";
 import { Backnorym } from "./styles";
-import { BNF } from "../modals/bnf";
+import { Commands } from "../modals/commands";
 import { useState } from "react";
 import "./header.css";
 
 export function Header() {
-  const [openBNF, setOpenBNF] = useState(false);
+  const [openCommands, setOpenCommands] = useState(false);
 
   return (
     <>
@@ -28,10 +28,10 @@ export function Header() {
             <div className="container mt-2">
               <button
                 className="d-flex btn btn-info"
-                onClick={() => setOpenBNF(true)}
+                onClick={() => setOpenCommands(true)}
                 style={{ cursor: "pointer" }}
               >
-                BNF 📃
+                Comandos 📃
               </button>
             </div>
             <div>
@@ -56,10 +56,10 @@ export function Header() {
 
       {/* MODAL */}
 
-      <BNF
-        openBNF={openBNF}
-        onClose={() => setOpenBNF(false)}
-        setOpenBNF={() => setOpenBNF(false)}
+      <Commands
+        openCommands={openCommands}
+        onClose={() => setOpenCommands(false)}
+        setOpenCommands={() => setOpenCommands(false)}
       />
     </>
   );

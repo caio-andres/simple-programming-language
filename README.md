@@ -20,7 +20,7 @@ cd language
 npm i
 ```
 
-### 4. Execute o projeto:
+### 4. Execute o projeto (language):
 
 ```bash
 npm start
@@ -35,14 +35,14 @@ cd interface
 ### 6. Instale as dependências:
 
 ```bash
-# É necessário utilizar este comando para que não ocorra conflito de dependências
-npm i react-json-view --legacy-peer-deps
+# É necessário forçar a instalação para que não ocorra conflito de dependências
+npm install --force
 ```
 
-### 7. Execute o projeto:
+### 7. Execute o projeto (interface):
 
 ```bash
-npm run dev
+npm start
 ```
 
 ### 8. Abra o browser pelo terminal:

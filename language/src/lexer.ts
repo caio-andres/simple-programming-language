@@ -20,6 +20,9 @@ export enum TokenType {
   Do = "DO",
   GreaterThan = ">",
   GreaterThanOrEqual = ">=",
+  SmallerThan = "<",
+  SmallerThanOrEqual = "<=",
+  Different = "!=",
 }
 
 export class Token {
@@ -108,6 +111,16 @@ export class Lexer {
           return new Token(TokenType.GreaterThanOrEqual, ">=");
         }
         return new Token(TokenType.GreaterThan, ">");
+      }
+
+      if (this.currentChar === "<") {
+        this.advance();
+        // Verificar se o próximo caractere forma o operador "<="
+        if ((this.currentChar as string) === "=") {
+          this.advance();
+          return new Token(TokenType.SmallerThanOrEqual, "<=");
+        }
+        return new Token(TokenType.SmallerThan, "<");
       }
 
       if (this.currentChar === "=") {
