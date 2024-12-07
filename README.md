@@ -48,7 +48,7 @@ npm run dev
 ### 8. Abra o browser pelo terminal:
 
 ```bash
-# pressione estas teclas:
+# Pressione estas teclas:
 O + enter
 ```
 
