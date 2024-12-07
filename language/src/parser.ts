@@ -8,6 +8,7 @@ import {
   ASTNode,
   IfNode,
   ConditionalNode,
+  WhileNode,
 } from "./ast-nodes";
 
 export class Parser {
@@ -56,6 +57,19 @@ export class Parser {
     }
 
     return new IfNode(condition, thenBranch, elseBranch);
+  }
+
+  private whileStatement(): ASTNode {
+    this.eat(TokenType.While);
+    const condition = this.conditional(); // Parse da condição
+    this.eat(TokenType.Do);
+    const doBranch = this.statement(); // Parse do bloco 'do'
+
+    if (this.currentToken.type === TokenType.Semicolon) {
+      this.eat(TokenType.Semicolon);
+    }
+
+    return new WhileNode(condition, doBranch);
   }
 
   // fim da parte nova
@@ -115,6 +129,8 @@ export class Parser {
   public statement(): ASTNode {
     if (this.currentToken.type === TokenType.If) {
       return this.ifStatement();
+    } else if (this.currentToken.type === TokenType.While) {
+      return this.whileStatement();
     } else if (this.currentToken.type === TokenType.Name) {
       const nextToken = this.lexer.lookAhead();
       if (nextToken.type === TokenType.Equals) {
