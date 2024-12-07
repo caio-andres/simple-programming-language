@@ -18,7 +18,7 @@ app.listen(port, () => {
   console.log(`Server na porta: ${port}`);
 });
 
-// Interpretar textarea presente no frontend
+// Interpretar o resultado da AST
 export const interpretAstHTTP = () => {
   app.post("/interpret-ast", (req, res) => {
     const { code } = req.body;
@@ -35,6 +35,7 @@ export const interpretAstHTTP = () => {
   });
 };
 
+// Imprimir o resultado das variáveis
 export const interpretVariablesHTTP = () => {
   app.post("/interpret-variables", (req, res) => {
     const { code } = req.body;

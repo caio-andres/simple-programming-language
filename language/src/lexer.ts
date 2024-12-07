@@ -18,6 +18,8 @@ export enum TokenType {
   Then = "THEN",
   While = "WHILE",
   Do = "DO",
+  GreaterThan = ">",
+  GreaterThanOrEqual = ">=",
 }
 
 export class Token {
@@ -81,6 +83,7 @@ export class Lexer {
       ")": TokenType.RightParen,
       "=": TokenType.Equals,
       ";": TokenType.Semicolon,
+      ">": TokenType.GreaterThan,
     };
 
     while (this.currentChar !== null) {
@@ -95,6 +98,16 @@ export class Lexer {
 
       if (/[a-zA-Z_]/.test(this.currentChar)) {
         return this.name();
+      }
+
+      if (this.currentChar === ">") {
+        this.advance();
+        // Verificar se o próximo caractere forma o operador ">="
+        if ((this.currentChar as string) === "=") {
+          this.advance();
+          return new Token(TokenType.GreaterThanOrEqual, ">=");
+        }
+        return new Token(TokenType.GreaterThan, ">");
       }
 
       if (this.currentChar === "=") {
