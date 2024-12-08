@@ -100,7 +100,7 @@ export const Execute: React.FC = () => {
             >
               <h5>WHILE</h5>
               <code>x = 1;</code>
-              <code>while 10 {">"} x do;</code>
+              <code>while 10 {">"} x do</code>
               <code>&nbsp;&nbsp;x = x + 1;</code>
               <code>;</code>
             </div>
