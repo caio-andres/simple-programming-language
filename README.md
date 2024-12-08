@@ -56,19 +56,18 @@ Enjoy!
 
 # Commands
 
-| SPL                     | Descrição                                                                                                                  | Exemplo                                                                                                     |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `<assignment>`          | Atribuição de um valor a uma variável.                                                                                     | `x = 5;`                                                                                                    |
-| `<if_statement>`        | Estrutura condicional que executa um bloco de código se uma condição for verdadeira, com possibilidade de um bloco `else`. | `check x > 10 then`<br>&nbsp;&nbsp;&nbsp;&nbsp;`y = 2;`<br>` or`<br>&nbsp;&nbsp;&nbsp;&nbsp;`y = 3;`<br>`;` |
-| `<while_statement>`     | Laço de repetição que executa um bloco de código enquanto uma condição for verdadeira.                                     | `loop x < 10 until`<br>&nbsp;&nbsp;&nbsp;&nbsp;`x = x + 1;`<br>`;`                                          |
-| `<expression>`          | Expressão aritmética que pode envolver soma e subtração de termos.                                                         | `5 + 3 - 2`                                                                                                 |
-| `<term>`                | Termo de uma expressão que pode envolver multiplicação e divisão.                                                          | `2 * 3 / 4`                                                                                                 |
-| `<factor>`              | Elemento básico de uma expressão, como um número, uma variável, uma string ou uma subexpressão.                            | `7`<br>`x`<br>`(x + 2)`                                                                                     |
-| `<conditional>`         | Condição booleana.                                                                                                         | `x > 5`<br>`z == 0`                                                                                         |
-| `<relational_operator>` | Operadores relacionais usados para comparar valores.                                                                       | `==`<br>`<`<br>`>`<br>`<=`<br>`>=`                                                                          |
-| `<name>`                | Nome de uma variável ou função.                                                                                            | `x`<br>`result`                                                                                             |
-| `<number>`              | Valor numérico inteiro.                                                                                                    | `5`<br>`100`                                                                                                |
-|                         |
+| Descrição                                                                                                                  | Exemplo                                                                                                     |
+| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Atribuição de um valor a uma variável.                                                                                     | `x = 5;`                                                                                                    |
+| Estrutura condicional que executa um bloco de código se uma condição for verdadeira, com possibilidade de um bloco `else`. | `check x > 10 then`<br>&nbsp;&nbsp;&nbsp;&nbsp;`y = 2;`<br>` or`<br>&nbsp;&nbsp;&nbsp;&nbsp;`y = 3;`<br>`;` |
+| Laço de repetição que executa um bloco de código enquanto uma condição for verdadeira.                                     | `loop x < 10 until`<br>&nbsp;&nbsp;&nbsp;&nbsp;`x = x + 1;`<br>`;`                                          |
+| Expressão aritmética que pode envolver soma e subtração de termos.                                                         | `5 + 3 - 2`                                                                                                 |
+| Termo de uma expressão que pode envolver multiplicação e divisão.                                                          | `2 * 3 / 4`                                                                                                 |
+| Elemento básico de uma expressão, como um número, uma variável, uma string ou uma subexpressão.                            | `7`<br>`x`<br>`(x + 2)`                                                                                     |
+| Condição booleana.                                                                                                         | `x > 5`<br>`z == 0`                                                                                         |
+| Operadores relacionais usados para comparar valores.                                                                       | `==`<br>`<`<br>`>`<br>`<=`<br>`>=`                                                                          |
+| Nome de uma variável ou função.                                                                                            | `x`<br>`result`                                                                                             |
+| Valor numérico inteiro.                                                                                                    | `5`<br>`100`                                                                                                |
 
 # Technologies used
 
