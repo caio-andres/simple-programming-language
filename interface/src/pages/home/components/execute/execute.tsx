@@ -66,13 +66,61 @@ export const Execute: React.FC = () => {
         </div>
         <textarea
           className="form-control mb-3"
-          style={{ height: "250px" }}
+          style={{
+            height: "250px",
+            backgroundColor: "#171c29",
+            color: "#FFF",
+            border: "1px solid #727272",
+          }}
           placeholder="Digite o seu código SPL aqui... ✍🏻"
           value={textAreaValue}
           onChange={(e) => setTextAreaValue(e.target.value)}
         />
+        <div className="d-flex flex-column" style={{ textAlign: "left" }}>
+          <h2>Exemplos:</h2>
+          <div className="d-flex justify-content-between">
+            <div
+              className="d-flex flex-column rounded p-2"
+              style={{
+                border: "1px solid #686666",
+                backgroundColor: "#171C29",
+              }}
+            >
+              <h5>VARIÁVEL</h5>
+              <code>x = 1;</code>
+              <code>y = x;</code>
+              <code>z = x * 10 + y;</code>
+            </div>
+            <div
+              className="d-flex flex-column rounded p-2"
+              style={{
+                border: "1px solid #686666",
+                backgroundColor: "#171C29",
+              }}
+            >
+              <h5>WHILE</h5>
+              <code>x = 1;</code>
+              <code>while 10 {">"} x do;</code>
+              <code>&nbsp;&nbsp;x = x + 1;</code>
+              <code>;</code>
+            </div>
+            <div
+              className="d-flex flex-column rounded p-2"
+              style={{
+                border: "1px solid #686666",
+                backgroundColor: "#171C29",
+              }}
+            >
+              <h5>IF / ELSE</h5>
+              <code>if x == 10 then</code>
+              <code>&nbsp;&nbsp;y = 10;</code>
+              <code>else</code>
+              <code>&nbsp;&nbsp;y = 20;</code>
+              <code>;</code>
+            </div>
+          </div>
+        </div>
       </div>
-
       <div className="container d-flex flex-column">
         {variables && json ? (
           <>
@@ -81,8 +129,9 @@ export const Execute: React.FC = () => {
                 <h2>Resultado</h2>
               </div>
               <div
-                className="p-3 bg-dark rounded"
+                className="p-3 rounded"
                 style={{
+                  backgroundColor: "#1D1F21",
                   border: "1px solid #727272",
                   textAlign: "left",
                   height: "250px",
