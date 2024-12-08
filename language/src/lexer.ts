@@ -87,6 +87,7 @@ export class Lexer {
       "=": TokenType.Equals,
       ";": TokenType.Semicolon,
       ">": TokenType.GreaterThan,
+      "<": TokenType.SmallerThan,
     };
 
     while (this.currentChar !== null) {

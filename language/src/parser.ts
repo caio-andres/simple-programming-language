@@ -47,6 +47,10 @@ export class Parser {
       this.eat(TokenType.SmallerThan);
       const right = this.expr();
       return new ConditionalNode(left, "<", right);
+    } else if (this.currentToken.type === TokenType.SmallerThanOrEqual) {
+      this.eat(TokenType.SmallerThanOrEqual);
+      const right = this.expr();
+      return new ConditionalNode(left, "<=", right);
     }
     return left;
   }

@@ -66,7 +66,7 @@ export const Execute: React.FC = () => {
         </div>
         <textarea
           className="form-control mb-3"
-          style={{ height: "300px" }}
+          style={{ height: "250px" }}
           placeholder="Digite o seu código SPL aqui... ✍🏻"
           value={textAreaValue}
           onChange={(e) => setTextAreaValue(e.target.value)}
@@ -85,7 +85,7 @@ export const Execute: React.FC = () => {
                 style={{
                   border: "1px solid #727272",
                   textAlign: "left",
-                  height: "300px",
+                  height: "250px",
                   maxHeight: "610px",
                   overflow: "auto",
                 }}
@@ -105,7 +105,7 @@ export const Execute: React.FC = () => {
                   displayObjectSize
                   src={json}
                   style={{
-                    maxHeight: "250px",
+                    maxHeight: "200px",
                     overflow: "auto",
                     borderRadius: "10px",
                     padding: "0.4rem",
