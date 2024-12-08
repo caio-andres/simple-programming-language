@@ -24,23 +24,20 @@ export const Execute: React.FC = () => {
       );
       setJson(response.data);
     } catch (err: any) {
-      const errorMessage =
-        err.response?.data?.message || // Mensagem personalizada do servidor
-        err.response?.statusText || // Status text do servidor (ex.: "Not Found")
-        err.message || // Mensagem geral do Axios (ex.: "Network Error")
-        "Erro desconhecido."; // Mensagem padrão
-
       // Notificação com toast
-      toast.error(`Error: ${errorMessage}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      toast.error(
+        "Você deve escrever algum comando.",
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
 
       console.error("Erro ao buscar dados do servidor em json:", err);
     }
@@ -96,7 +93,7 @@ export const Execute: React.FC = () => {
             value={textAreaValue}
             onChange={(e) => setTextAreaValue(e.target.value)}
           />
-          <div className="d-flex flex-column" style={{ textAlign: "left" }}>
+          <div className="d-flex flex-column mb-3" style={{ textAlign: "left" }}>
             <h2>Exemplos:</h2>
             <div className="d-flex justify-content-between">
               <div

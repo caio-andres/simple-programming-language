@@ -129,7 +129,7 @@ export function interpretProgramVariables(input: string) {
     }
 
     const variablesValues = Object.entries(context["variables"]).map(
-      ([name, value]) => `${name}: ${value}`
+      ([name, value]) => `${name} = ${value}`
     );
 
     return variablesValues;

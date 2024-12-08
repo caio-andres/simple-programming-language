@@ -68,8 +68,8 @@ export class Lexer {
       this.advance();
     }
     if (result === "check") return new Token(TokenType.If, result); // implementação do IF
-    if (result === "or") return new Token(TokenType.Else, result); // implementação do IF
-    if (result === "then") return new Token(TokenType.Then, result); // implementação do IF
+    if (result === "or") return new Token(TokenType.Else, result); // implementação do ELSE
+    if (result === "then") return new Token(TokenType.Then, result); // implementação do THEN
     if (result == "loop") return new Token(TokenType.While, result); // Implementação do WHILE
     if (result == "until") return new Token(TokenType.Do, result); // Implementação do DO
 
