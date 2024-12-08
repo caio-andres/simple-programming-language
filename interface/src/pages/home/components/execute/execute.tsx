@@ -112,6 +112,7 @@ export const Execute: React.FC = () => {
               }}
             >
               <h5>IF / ELSE</h5>
+              <code>x = 1;</code>
               <code>if x == 10 then</code>
               <code>&nbsp;&nbsp;y = 10;</code>
               <code>else</code>
