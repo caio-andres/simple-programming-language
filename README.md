@@ -56,24 +56,19 @@ Enjoy!
 
 # Commands
 
-| **SPL (Linguagem)**     | **Descrição**                                                                                                                                            |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `<program>`             | Representa um programa composto por uma ou mais declarações.                                                                                             |
-| `<statement>`           | Uma instrução no programa, que pode ser uma atribuição, uma expressão seguida de ponto e vírgula, ou uma estrutura de controle (`if`, `while`, `print`). |
-| `<assignment>`          | Declaração de atribuição que associa o valor de uma expressão a um identificador.                                                                        |
-| `<if_statement>`        | Estrutura condicional que avalia uma condição e executa um bloco de instruções com suporte opcional ao bloco `else`.                                     |
-| `<while_statement>`     | Estrutura de repetição que executa um bloco de instruções enquanto a condição especificada for verdadeira.                                               |
-| `<print_statement>`     | Imprime o valor de uma expressão ou string no console.                                                                                                   |
-| `<expression>`          | Representa uma operação matemática, podendo conter termos com operadores de soma ou subtração.                                                           |
-| `<term>`                | Parte de uma expressão envolvendo multiplicação ou divisão de fatores.                                                                                   |
-| `<factor>`              | Elemento base de uma expressão: número, nome, string ou outra expressão entre parênteses.                                                                |
-| `<conditional>`         | Expressão booleana que avalia condições lógicas usando operadores `OR`.                                                                                  |
-| `<bool_term>`           | Subexpressão booleana usando operador lógico `AND`.                                                                                                      |
-| `<bool_factor>`         | Representa uma comparação entre duas expressões usando operadores relacionais.                                                                           |
-| `<relational_operator>` | Operadores relacionais utilizados para comparar valores (`==`, `!=`, `<`, `<=`, `>`, `>=`).                                                              |
-| `<number>`              | Literal numérico composto por dígitos de 0 a 9.                                                                                                          |
-| `<name>`                | Identificador válido começando com uma letra ou sublinhado, seguido por letras, números ou sublinhados.                                                  |
-| `<string>`              | Literal de string delimitada por aspas duplas.                                                                                                           |
+| SPL                     | Descrição                                                                                                                  | Exemplo                                                                                                     |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `<assignment>`          | Atribuição de um valor a uma variável.                                                                                     | `x = 5;`                                                                                                    |
+| `<if_statement>`        | Estrutura condicional que executa um bloco de código se uma condição for verdadeira, com possibilidade de um bloco `else`. | `check x > 10 then`<br>&nbsp;&nbsp;&nbsp;&nbsp;`y = 2;`<br>` or`<br>&nbsp;&nbsp;&nbsp;&nbsp;`y = 3;`<br>`;` |
+| `<while_statement>`     | Laço de repetição que executa um bloco de código enquanto uma condição for verdadeira.                                     | `loop x < 10 until`<br>&nbsp;&nbsp;&nbsp;&nbsp;`x = x + 1;`<br>`;`                                          |
+| `<expression>`          | Expressão aritmética que pode envolver soma e subtração de termos.                                                         | `5 + 3 - 2`                                                                                                 |
+| `<term>`                | Termo de uma expressão que pode envolver multiplicação e divisão.                                                          | `2 * 3 / 4`                                                                                                 |
+| `<factor>`              | Elemento básico de uma expressão, como um número, uma variável, uma string ou uma subexpressão.                            | `7`<br>`x`<br>`(x + 2)`                                                                                     |
+| `<conditional>`         | Condição booleana.                                                                                                         | `x > 5`<br>`z == 0`                                                                                         |
+| `<relational_operator>` | Operadores relacionais usados para comparar valores.                                                                       | `==`<br>`<`<br>`>`<br>`<=`<br>`>=`                                                                          |
+| `<name>`                | Nome de uma variável ou função.                                                                                            | `x`<br>`result`                                                                                             |
+| `<number>`              | Valor numérico inteiro.                                                                                                    | `5`<br>`100`                                                                                                |
+|                         |
 
 # Technologies used
 
