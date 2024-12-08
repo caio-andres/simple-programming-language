@@ -1,11 +1,10 @@
 // index.ts
 // import fs from "fs";
 // import { interpretProgram } from "./interpreter";
-import { interpretAstHTTP, interpretVariablesHTTP } from "./routes";
+import { interpretHTTP } from "./routes";
 
 // Executando as rotas HTTP, vindas de routes.ts
-interpretVariablesHTTP();
-interpretAstHTTP();
+interpretHTTP();
 
 /*
 export const main = () => {

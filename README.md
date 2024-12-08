@@ -49,7 +49,7 @@ npm start
 
 ```bash
 # Pressione estas teclas:
-O + enter
+O + ENTER
 ```
 
 Enjoy!

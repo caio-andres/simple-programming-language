@@ -67,11 +67,11 @@ export class Lexer {
       result += this.currentChar;
       this.advance();
     }
-    if (result === "if") return new Token(TokenType.If, result); // implementação do IF
-    if (result === "else") return new Token(TokenType.Else, result); // implementação do IF
+    if (result === "check") return new Token(TokenType.If, result); // implementação do IF
+    if (result === "or") return new Token(TokenType.Else, result); // implementação do IF
     if (result === "then") return new Token(TokenType.Then, result); // implementação do IF
-    if (result == "while") return new Token(TokenType.While, result); // Implementação do WHILE
-    if (result == "do") return new Token(TokenType.Do, result); // Implementação do DO
+    if (result == "loop") return new Token(TokenType.While, result); // Implementação do WHILE
+    if (result == "until") return new Token(TokenType.Do, result); // Implementação do DO
 
     return new Token(TokenType.Name, result);
   }

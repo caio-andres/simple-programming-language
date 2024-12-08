@@ -1,5 +1,4 @@
 import { Modal, Button } from "react-bootstrap";
-import "./Commands.css";
 
 interface Props {
   openCommands: boolean;
@@ -88,7 +87,7 @@ export const Commands: React.FC<Props> = ({
                 <code>else</code>.
               </td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                <code>if x &gt; 10 then y = 2; else y = 3;</code>
+                <code>check x &gt; 10 then y = 2; or y = 3;</code>
               </td>
             </tr>
             <tr>
@@ -100,7 +99,7 @@ export const Commands: React.FC<Props> = ({
                 condição for verdadeira.
               </td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                <code>while x &lt; 10 do x = x + 1;</code>
+                <code>loop x &lt; 10 until x = x + 1;</code>
               </td>
             </tr>
             <tr>
@@ -169,6 +168,10 @@ export const Commands: React.FC<Props> = ({
                 <code>&lt;</code>
                 <br />
                 <code>&gt;</code>
+                <br />
+                <code>&lt;=</code>
+                <br />
+                <code>&gt;=</code>
               </td>
             </tr>
             <tr>
