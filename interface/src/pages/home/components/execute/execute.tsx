@@ -1,6 +1,6 @@
 import reset from "../../../../../public/media/svg/reset.svg";
 import axios from "axios";
-import ReactJson from "react-json-view";
+import { darkColorspace, JsonViewer } from "@textea/json-viewer";
 import React, { useState } from "react";
 import { handleRefreshClick } from "../function/refresh";
 import { Main } from "./style";
@@ -168,9 +168,9 @@ export const Execute: React.FC = () => {
               <div className="mt-3" style={{ textAlign: "left" }}>
                 <h2>AST</h2>
                 <div className="rounded">
-                  <ReactJson
-                    displayObjectSize
-                    src={json}
+                  <JsonViewer
+                    value={json}
+                    theme={darkColorspace}
                     style={{
                       maxHeight: "200px",
                       overflow: "auto",
@@ -179,7 +179,6 @@ export const Execute: React.FC = () => {
                       border: "1px solid #30323b",
                       borderBottom: "5px solid #595a5f",
                     }}
-                    theme="google"
                   />
                 </div>
               </div>
