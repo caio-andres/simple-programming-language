@@ -3,7 +3,7 @@ import axios from "axios";
 import { darkColorspace, JsonViewer } from "@textea/json-viewer";
 import React, { useState } from "react";
 import { handleRefreshClick } from "../function/refresh";
-import { Main } from "./style";
+import { Exemplos, Main } from "./style";
 import { toast } from "react-toastify";
 
 const serverPort = 3000;
@@ -95,7 +95,7 @@ export const Execute: React.FC = () => {
             style={{ textAlign: "left" }}
           >
             <h2>Exemplos:</h2>
-            <div className="d-flex justify-content-between">
+            <Exemplos className="d-flex justify-content-between">
               <div
                 className="d-flex flex-column rounded p-2"
                 style={{
@@ -136,7 +136,7 @@ export const Execute: React.FC = () => {
                 <code>&nbsp;&nbsp;y = 20;</code>
                 <code>;</code>
               </div>
-            </div>
+            </Exemplos>
           </div>
         </div>
         <div className="container d-flex flex-column">

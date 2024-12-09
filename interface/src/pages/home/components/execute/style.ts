@@ -7,3 +7,11 @@ export const Main = styled.main`
     flex-direction: column;
   }
 `;
+
+export const Exemplos = styled.div`
+  @media ${breakpoint.xs} {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+`;
