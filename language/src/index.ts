@@ -1,10 +1,15 @@
 // index.ts
 // import fs from "fs";
 // import { interpretProgram } from "./interpreter";
-import { interpretHTTP } from "./routes";
+import app from "./routes";
 
-// Executando as rotas HTTP, vindas de routes.ts
-interpretHTTP();
+// Porta padrão do Vercel: process.env.PORT
+const port = process.env.PORT || 3000;
+
+// Inicializa o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta: ${port}`);
+});
 
 /*
 export const main = () => {

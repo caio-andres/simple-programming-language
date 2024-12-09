@@ -8,53 +8,43 @@ import { ASTNodeCounter } from "./ast-nodes.ts";
 
 const app = express();
 
-// Habilitando cors e o middleware
-app.use(cors(), express.json());
+// Habilitando CORS e JSON middleware
+app.use(cors());
+app.use(express.json());
 
-const port = 3000;
+// Rotas para interpretar variáveis
+app.post("/interpret-variables", (req: Request, res: Response) => {
+  const { code } = req.body;
+  if (!code) {
+    return res.status(400).send({ error: "Nenhum código variables enviado." });
+  }
 
-// Porta localhost (3000)
-app.listen(port, () => {
-  console.log(`Server na porta: ${port}`);
+  try {
+    const output = interpretProgramVariables(code);
+    res.send(output);
+  } catch (err) {
+    console.error(
+      "Erro ao executar a requesição post de /interpret-variables:",
+      err
+    );
+    res.status(500).send({ error: "Erro interno ao processar variáveis." });
+  }
 });
 
-// Imprimir o resultado das variáveis e JSON (AST)
-export const interpretHTTP = () => {
-  // Conteúdo do nome e valor das variáveis
-  app.post("/interpret-variables", (req: any, res: any) => {
-    const { code } = req.body;
-    if (!code) {
-      return res
-        .status(400)
-        .send({ error: "Nenhum código variables enviado." });
-    }
+// Rotas para interpretar AST
+app.post("/interpret-ast", (req: Request, res: Response) => {
+  const { code } = req.body;
+  if (!code) {
+    return res.status(400).send({ error: "Nenhum código json enviado." });
+  }
 
-    try {
-      const output = interpretProgramVariables(code);
-      res.send(output);
-    } catch (err) {
-      console.error(
-        "Erro ao executar a requesição post de /interpret-variables:",
-        err
-      );
-    }
-  });
+  try {
+    ASTNodeCounter.resetId();
+    res.send(interpretProgramAst(code));
+  } catch (err) {
+    console.error("Erro ao executar a requesição post de /interpret-ast:", err);
+    res.status(500).send({ error: "Erro interno ao interpretar o AST." });
+  }
+});
 
-  // Conteúdo do JSON entregue ao interpretar (AST)
-  app.post("/interpret-ast", (req: any, res: any) => {
-    const { code } = req.body;
-    if (!code) {
-      return res.status(400).send({ error: "Nenhum código json enviado." });
-    }
-
-    try {
-      ASTNodeCounter.resetId();
-      res.send(interpretProgramAst(code));
-    } catch (err) {
-      console.error(
-        "Erro ao executar a requesição post de /interpret-ast:",
-        err
-      );
-    }
-  });
-};
+export default app;
