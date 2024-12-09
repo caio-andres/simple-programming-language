@@ -3,8 +3,8 @@ import cors from "cors";
 import {
   interpretProgramAst,
   interpretProgramVariables,
-} from "./interpreter";
-import { ASTNodeCounter } from "./ast-nodes";
+} from "./interpreter.ts";
+import { ASTNodeCounter } from "./ast-nodes.ts";
 
 const app = express();
 
