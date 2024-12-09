@@ -134,14 +134,6 @@ export class Lexer {
         return new Token(TokenType.Equals, "=");
       }
 
-      if (this.currentChar === "!") {
-        this.advance();
-        if (this.currentChar === "=") {
-          this.advance();
-          return new Token(TokenType.Different, "!=");
-        }
-      }
-
       if (operatorTokens[this.currentChar]) {
         const token = new Token(
           operatorTokens[this.currentChar],
