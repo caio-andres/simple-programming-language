@@ -144,19 +144,6 @@ export const Commands: React.FC<Props> = ({
             </tr>
             <tr>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                <code>&lt;conditional&gt;</code>
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Condição booleana
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                <code>x &gt; 5</code>
-                <br />
-                <code>z == 0</code>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
                 <code>&lt;relational_operator&gt;</code>
               </td>
               <td style={{ border: "1px solid #ddd", padding: "8px" }}>
@@ -172,6 +159,8 @@ export const Commands: React.FC<Props> = ({
                 <code>&lt;=</code>
                 <br />
                 <code>&gt;=</code>
+                <br />
+                <code>!=</code>
               </td>
             </tr>
             <tr>

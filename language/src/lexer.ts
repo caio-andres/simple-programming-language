@@ -140,7 +140,6 @@ export class Lexer {
           this.advance();
           return new Token(TokenType.Different, "!=");
         }
-        return new Token(TokenType.Different, "!=");
       }
 
       if (operatorTokens[this.currentChar]) {
