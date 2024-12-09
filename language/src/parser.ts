@@ -35,6 +35,10 @@ export class Parser {
       this.eat(TokenType.EqualsEquals);
       const right = this.expr();
       return new ConditionalNode(left, "==", right);
+    } else if (this.currentToken.type === TokenType.Different) {
+      this.eat(TokenType.Different);
+      const right = this.expr();
+      return new ConditionalNode(left, "!=", right);
     } else if (this.currentToken.type === TokenType.GreaterThan) {
       this.eat(TokenType.GreaterThan);
       const right = this.expr();
