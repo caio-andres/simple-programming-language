@@ -3,8 +3,8 @@ import cors from "cors";
 import {
   interpretProgramAst,
   interpretProgramVariables,
-} from "./interpreter.ts";
-import { ASTNodeCounter } from "./ast-nodes.ts";
+} from "./interpreter";
+import { ASTNodeCounter } from "./ast-nodes";
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rotas para interpretar variáveis
-app.post("/interpret-variables", (req: Request, res: Response) => {
+app.post("/interpret-variables", (req: any, res: any) => {
   const { code } = req.body;
   if (!code) {
     return res.status(400).send({ error: "Nenhum código variables enviado." });
@@ -32,7 +32,7 @@ app.post("/interpret-variables", (req: Request, res: Response) => {
 });
 
 // Rotas para interpretar AST
-app.post("/interpret-ast", (req: Request, res: Response) => {
+app.post("/interpret-ast", (req: any, res: any) => {
   const { code } = req.body;
   if (!code) {
     return res.status(400).send({ error: "Nenhum código json enviado." });
