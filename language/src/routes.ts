@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import {
   interpretProgramAst,
@@ -21,7 +21,7 @@ app.listen(port, () => {
 // Imprimir o resultado das variáveis e JSON (AST)
 export const interpretHTTP = () => {
   // Conteúdo do nome e valor das variáveis
-  app.post("/interpret-variables", (req, res) => {
+  app.post("/interpret-variables", (req: any, res: any) => {
     const { code } = req.body;
     if (!code) {
       return res
@@ -33,12 +33,15 @@ export const interpretHTTP = () => {
       const output = interpretProgramVariables(code);
       res.send(output);
     } catch (err) {
-      console.error("Erro ao ler código de interpretVariablesHTTP:", err);
+      console.error(
+        "Erro ao executar a requesição post de /interpret-variables:",
+        err
+      );
     }
   });
 
   // Conteúdo do JSON entregue ao interpretar (AST)
-  app.post("/interpret-ast", (req, res) => {
+  app.post("/interpret-ast", (req: any, res: any) => {
     const { code } = req.body;
     if (!code) {
       return res.status(400).send({ error: "Nenhum código json enviado." });
@@ -48,7 +51,10 @@ export const interpretHTTP = () => {
       ASTNodeCounter.resetId();
       res.send(interpretProgramAst(code));
     } catch (err) {
-      console.error("Erro ao ler código de interpretJsonHTTP:", err);
+      console.error(
+        "Erro ao executar a requesição post de /interpret-ast:",
+        err
+      );
     }
   });
 };
