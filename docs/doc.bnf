@@ -1,13 +1,11 @@
 <program>         ::= <statement> | <statement> <program>
-<statement>       ::= <assignment> 
+<statement>       ::= <assignment>
                       | <expression> ";"
                       | <if_statement>
                       | <while_statement>
-                      | <print_statement>
 <assignment>      ::= <name> "=" <expression> ";"
 <if_statement>    ::= "check" <conditional> "then" <statement> ["or" <statement>] [";"]
 <while_statement> ::= "loop" <conditional> "until" <statement> [";"]
-<print_statement> ::= "print" (<expression> | <string>) ";"
 <expression>      ::= <term> { ("+" | "-") <term> }
 <term>            ::= <factor> { ("*" | "/") <factor> }
 <factor>          ::= <number> 
