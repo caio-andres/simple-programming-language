@@ -6,7 +6,7 @@ import { handleRefreshClick } from "../function/refresh";
 import { Exemplos, Main } from "./style";
 import { toast } from "react-toastify";
 
-const serverPort = 3000;
+// const serverPort = 3000;
 
 export const Execute: React.FC = () => {
   const [textAreaValue, setTextAreaValue] = useState<string>();
@@ -17,7 +17,7 @@ export const Execute: React.FC = () => {
   const executeJson = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:${serverPort}/interpret-ast`,
+        `https://simple-programming-language.vercel.app/interpret-ast`,
         {
           code: textAreaValue,
         }
@@ -43,7 +43,7 @@ export const Execute: React.FC = () => {
   const executeVariables = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:${serverPort}/interpret-variables`,
+        `https://simple-programming-language.vercel.app/interpret-variables`,
         {
           code: textAreaValue,
         }

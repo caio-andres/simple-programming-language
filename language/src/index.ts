@@ -4,7 +4,7 @@
 import app from "./routes";
 
 // Porta padrão do Vercel: process.env.PORT
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 // Inicializa o servidor
 app.listen(port, () => {
