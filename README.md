@@ -35,8 +35,7 @@ cd interface
 ### 6. Instale as dependências:
 
 ```bash
-# É necessário forçar a instalação para que não ocorra conflito de dependências
-npm install --force
+npm i
 ```
 
 ### 7. Execute o projeto (interface):
